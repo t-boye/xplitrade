@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { api, type Profit, type Balance, type Trade, type BotConfig } from '../api/client'
-import { TrendingUp, TrendingDown } from 'lucide-react'
+import { TrendingUp, TrendingDown, LogOut } from 'lucide-react'
 
 function num(n: number | null | undefined, d = 2): string {
   if (n == null || isNaN(n)) return '—'
@@ -23,6 +23,7 @@ export function Dashboard() {
   const [openTrades, setOpenTrades] = useState<Trade[]>([])
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState('')
+  const [exiting, setExiting] = useState<Record<number, boolean>>({})
 
   useEffect(() => {
     const load = async () => {
@@ -48,6 +49,20 @@ export function Dashboard() {
       <span className="w-5 h-5 border-2 border-xp-accent border-t-transparent rounded-full animate-spin" />
     </div>
   )
+
+  const forceExit = async (tradeId: number) => {
+    setExiting(e => ({ ...e, [tradeId]: true }))
+    try {
+      await api.forceExit(tradeId)
+      // refresh open positions after a short delay to let the exchange process it
+      setTimeout(() => {
+        api.status().then(ts => { if (Array.isArray(ts)) setOpenTrades(ts) }).catch(() => {})
+        setExiting(e => { const n = { ...e }; delete n[tradeId]; return n })
+      }, 1500)
+    } catch {
+      setExiting(e => { const n = { ...e }; delete n[tradeId]; return n })
+    }
+  }
 
   const totalProfit = profit?.profit_all_coin ?? 0
   const winRate = profit && profit.trade_count > 0 ? profit.winning_trades / profit.trade_count : 0
@@ -138,7 +153,7 @@ export function Dashboard() {
             <table className="xp-table">
               <thead>
                 <tr>
-                  {['Pair', 'Direction', 'Amount', 'Open Rate', 'Current', 'P&L', 'P&L %', 'Duration'].map(h => (
+                  {['Pair', 'Direction', 'Amount', 'Open Rate', 'Current', 'P&L', 'P&L %', 'Duration', ''].map(h => (
                     <th key={h} className="xp-th">{h}</th>
                   ))}
                 </tr>
@@ -162,6 +177,19 @@ export function Dashboard() {
                       {pct(t.profit_ratio)}
                     </td>
                     <td className="xp-td">{dur(t.duration ?? 0)}</td>
+                    <td className="xp-td">
+                      <button
+                        onClick={() => forceExit(t.trade_id)}
+                        disabled={!!exiting[t.trade_id]}
+                        className="inline-flex items-center gap-1 h-6 px-2 text-xs font-medium rounded text-xp-loss border border-xp-loss/20 hover:bg-xp-loss hover:text-white hover:border-xp-loss transition-colors duration-100 disabled:opacity-40 disabled:cursor-not-allowed"
+                        title="Force exit this trade"
+                      >
+                        {exiting[t.trade_id]
+                          ? <span className="w-3 h-3 border border-current border-t-transparent rounded-full animate-spin" />
+                          : <LogOut size={11} />}
+                        Exit
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
