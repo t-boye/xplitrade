@@ -134,9 +134,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Xplitrade/Xplitrade"
-Documentation = "https://Xplitrade.io"
-"Bug Tracker" = "https://github.com/Xplitrade/Xplitrade/issues"
+Homepage = "https://xplitrade.pages.dev"
+Documentation = "https://xplitrade.pages.dev"
+Repository = "https://github.com/t-boye/xplitrade"
+"Bug Tracker" = "https://github.com/t-boye/xplitrade/issues"
 
 
 [project.scripts]

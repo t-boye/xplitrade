@@ -1,6 +1,11 @@
 # Xplitrade — Professional Crypto Trading Bot
 
+[![Website](https://img.shields.io/badge/Website-xplitrade.pages.dev-12B574?style=flat-square&logo=cloudflare)](https://xplitrade.pages.dev)
+[![GitHub](https://img.shields.io/badge/GitHub-t--boye%2Fxplitrade-181717?style=flat-square&logo=github)](https://github.com/t-boye/xplitrade)
+
 > *"Exploit market inefficiencies with discipline, data, and zero emotional bias."*
+
+**Website:** https://xplitrade.pages.dev
 
 Xplitrade is a professional-grade, self-hosted algorithmic crypto trading engine written in Python.
 It supports all major exchanges, is controlled via Telegram or WebUI, and includes backtesting,
