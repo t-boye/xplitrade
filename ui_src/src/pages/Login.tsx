@@ -1,12 +1,16 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { Eye, EyeOff } from 'lucide-react'
 
 export function Login() {
-  const { login } = useAuth()
+  const { login, isAuth } = useAuth()
   const nav = useNavigate()
   const [url, setUrl] = useState(() => localStorage.getItem('xp-url') || 'http://127.0.0.1:8080')
+
+  useEffect(() => {
+    if (isAuth) nav('/dashboard', { replace: true })
+  }, [isAuth])
   const [user, setUser] = useState('')
   const [pass, setPass] = useState('')
   const [show, setShow] = useState(false)

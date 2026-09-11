@@ -14,7 +14,7 @@ const LEVEL_STYLE: Record<string, string> = {
 }
 
 export function Logs() {
-  const [logs, setLogs] = useState<[number, string, string, string][]>([])
+  const [logs, setLogs] = useState<[string, number, string, string, string][]>([])
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState('')
   const [level, setLevel] = useState<Level>('ALL')
@@ -32,7 +32,7 @@ export function Logs() {
   useEffect(() => { load(); const id = setInterval(load, 5000); return () => clearInterval(id) }, [])
   useEffect(() => { if (autoScroll) bottomRef.current?.scrollIntoView({ behavior: 'smooth' }) }, [logs, autoScroll])
 
-  const rows = level === 'ALL' ? logs : logs.filter(l => l[1] === level)
+  const rows = level === 'ALL' ? logs : logs.filter(l => l[3] === level)
 
   return (
     <div className="flex flex-col h-[calc(100vh-44px-40px)] space-y-3">
@@ -77,8 +77,9 @@ export function Logs() {
             <span className="text-xp-text-3 dark:text-xp-dtext-3">No entries</span>
           )}
           {rows.map((log, i) => {
-            const [ts, lvl, mod, msg] = log
-            const time = new Date(ts * 1000).toLocaleTimeString('en-US', { hour12: false })
+            const [dateStr, , mod, lvl, msg] = log
+            // dateStr is "2026-09-11 09:48:25" — extract just time portion
+            const time = dateStr?.split(' ')[1] ?? ''
             return (
               <div key={i} className="flex gap-3 leading-[1.6] hover:bg-black/[0.02] dark:hover:bg-white/[0.03] px-1 -mx-1 rounded">
                 <span className="text-xp-text-3 dark:text-xp-dtext-3 shrink-0 w-[72px]">{time}</span>
