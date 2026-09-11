@@ -99,7 +99,7 @@ export interface LogEntry {
 }
 
 export interface LogsResponse {
-  logs: [number, string, string, string][]
+  logs: [string, number, string, string, string][]
   log_count: number
 }
 
@@ -150,7 +150,13 @@ class ApiClient {
 
     if (!res.ok) {
       const body = await res.text().catch(() => res.statusText)
-      throw new Error(body || res.statusText)
+      try {
+        const parsed = JSON.parse(body)
+        throw new Error(parsed.detail || parsed.message || body)
+      } catch (e) {
+        if (e instanceof SyntaxError) throw new Error(body || res.statusText)
+        throw e
+      }
     }
 
     const text = await res.text()
@@ -175,8 +181,9 @@ class ApiClient {
   async login(username: string, password: string): Promise<AuthTokens> {
     const res = await fetch(`${this.botUrl}${BASE}/token/login`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({ username, password }),
+      headers: {
+        'Authorization': `Basic ${btoa(`${username}:${password}`)}`,
+      },
     })
     if (!res.ok) throw new Error('Invalid credentials')
     const tokens: AuthTokens = await res.json()
