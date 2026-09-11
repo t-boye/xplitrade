@@ -3,6 +3,7 @@ name: Build Documentation
 on:
   push:
     branches:
+      - master
       - develop
   release:
     types: [published]
@@ -50,6 +51,7 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         run: |
           mike deploy ${REF_NAME} latest --push --update-aliases
+          mike set-default latest --push
         env:
           REF_NAME: ${{ github.ref_name }}
 
@@ -57,6 +59,7 @@ jobs:
         if: ${{ github.event_name == 'release' }}
         run: |
           mike deploy ${REF_NAME} stable --push --update-aliases
+          mike set-default stable --push
         env:
           REF_NAME: ${{ github.ref_name }}
 
