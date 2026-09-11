@@ -1,0 +1,22 @@
+﻿FROM xplitradeorg/xplitrade:develop_freqairl
+
+USER root
+# Install dependencies
+COPY requirements-dev.txt /xplitrade/
+COPY docs/requirements-docs.txt /xplitrade/docs/
+
+ARG USERNAME=ftuser
+
+RUN apt-get update \
+    && apt-get -y install --no-install-recommends apt-utils dialog git ssh vim build-essential zsh \
+    && apt-get clean \
+    && mkdir -p /home/${USERNAME}/.vscode-server /home/${USERNAME}/.vscode-server-insiders /home/${USERNAME}/commandhistory \
+    && chown ${USERNAME}:${USERNAME} -R /home/${USERNAME}/.local/ \
+    && chown ${USERNAME}: -R /home/${USERNAME}/
+
+USER ftuser
+
+RUN pip install --user autopep8 -r requirements-dev.txt --no-cache-dir
+
+# Empty the ENTRYPOINT to allow all commands
+ENTRYPOINT []

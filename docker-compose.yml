@@ -1,0 +1,36 @@
+---
+services:
+  xplitrade:
+    image: xplitradeorg/xplitrade:stable
+    # image: xplitradeorg/xplitrade:develop
+    # Use plotting image
+    # image: xplitradeorg/xplitrade:develop_plot
+    # # Enable GPU Image and GPU Resources (only relevant for freqAI)
+    # # Make sure to uncomment the whole deploy section
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+    # Build step - only needed when additional dependencies are needed
+    # build:
+    #   context: .
+    #   dockerfile: "./docker/Dockerfile.custom"
+    restart: unless-stopped
+    container_name: xplitrade
+    volumes:
+      - "./user_data:/xplitrade/user_data"
+    # Expose api on port 8080 (localhost only)
+    # Please read the https://www.freqtrade.io/en/stable/rest-api/ documentation
+    # for more information.
+    ports:
+      - "127.0.0.1:8080:8080"
+    # Default command used when running `docker compose up`
+    command: >
+      trade
+      --logfile /xplitrade/user_data/logs/xplitrade.log
+      --db-url sqlite:////xplitrade/user_data/tradesv3.sqlite
+      --config /xplitrade/user_data/config.json
+      --strategy SampleStrategy

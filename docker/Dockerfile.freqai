@@ -1,0 +1,8 @@
+﻿ARG sourceimage=xplitradeorg/xplitrade
+ARG sourcetag=develop
+FROM ${sourceimage}:${sourcetag}
+
+# Install dependencies
+COPY requirements-freqai.txt /xplitrade/
+
+RUN pip install -r requirements-freqai.txt --user --no-cache-dir

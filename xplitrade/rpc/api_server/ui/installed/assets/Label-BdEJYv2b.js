@@ -1,0 +1,2 @@
+import{On as e,et as t,k as n,mt as r,qt as i,v as a,xt as o}from"./runtime-core.esm-bundler-B4b-2GOK.js";import{n as s}from"./Input-C-N0rJCP.js";import{A as c}from"./deepClone-d3W8HhmH.js";var l=n({__name:`Label`,props:{for:{type:String,required:!1},asChild:{type:Boolean,required:!1},as:{type:null,required:!1,default:`label`}},setup(n){let l=n;return s(),(n,s)=>(r(),a(e(c),t(l,{onMousedown:s[0]||=e=>{!e.defaultPrevented&&e.detail>1&&e.preventDefault()}}),{default:i(()=>[o(n.$slots,`default`)]),_:3},16))}});export{l as t};
+//# sourceMappingURL=Label-BdEJYv2b.js.map

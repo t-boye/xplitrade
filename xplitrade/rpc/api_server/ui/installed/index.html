@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="/xplitrade_logo.png" type="image/png">
+  <title>XplitradeUI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
+  <script type="module" crossorigin src="/assets/index-wxgNlDZx.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime-hePW80VL.js">
+  <link rel="modulepreload" crossorigin href="/assets/runtime-core.esm-bundler-B4b-2GOK.js">
+  <link rel="modulepreload" crossorigin href="/assets/deepClone-d3W8HhmH.js">
+  <link rel="modulepreload" crossorigin href="/assets/Input-C-N0rJCP.js">
+  <link rel="modulepreload" crossorigin href="/assets/usePortal-C07PinMs.js">
+  <link rel="modulepreload" crossorigin href="/assets/useLocale-DRTXHFtQ.js">
+  <link rel="modulepreload" crossorigin href="/assets/usePrimitiveElement-wNHCuyeS.js">
+  <link rel="modulepreload" crossorigin href="/assets/RovingFocusGroup-CnrHlCt1.js">
+  <link rel="modulepreload" crossorigin href="/assets/VisuallyHiddenInput-DewL7n0-.js">
+  <link rel="modulepreload" crossorigin href="/assets/overlay-DR-nxSLa.js">
+  <link rel="modulepreload" crossorigin href="/assets/Modal-D2UrpbuE.js">
+  <link rel="modulepreload" crossorigin href="/assets/Label-BdEJYv2b.js">
+  <link rel="modulepreload" crossorigin href="/assets/useOverlay-DukKrKJB.js">
+  <link rel="modulepreload" crossorigin href="/assets/ftbotwrapper-CsygLSOt.js">
+  <link rel="modulepreload" crossorigin href="/assets/Alert-DOn51bDQ.js">
+  <link rel="modulepreload" crossorigin href="/assets/FormField-B2EiIqZq.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-YfkUBzL8.css">
+
+  <style>
+    /* ── Utility classes ────────────────────────── */
+    .xpli-hide { display: none !important; }
+    .xpli-logo { height: 30px; width: auto; object-fit: contain; display: inline-block; }
+
+    /* ══════════════════════════════════════════════
+       XPLITRADE PREMIUM UI — Design System Override
+       ══════════════════════════════════════════════ */
+
+    /* ── Design tokens ─────────────────────────── */
+    :root {
+      --xp-bg:            #F7F8FA;
+      --xp-surface:       #FFFFFF;
+      --xp-border:        #E4E8EE;
+      --xp-border-strong: #C8D0DC;
+      --xp-text:          #0D1421;
+      --xp-text-2:        #4B5668;
+      --xp-text-3:        #8892A2;
+      --xp-accent:        #12BB7B;
+      --xp-accent-hover:  #0EA86C;
+      --xp-accent-dim:    rgba(18, 187, 123, 0.10);
+      --xp-nav-h:         52px;
+      --xp-radius-sm:     4px;
+      --xp-radius:        6px;
+      --xp-radius-lg:     10px;
+      --xp-shadow-xs:     0 1px 2px rgba(0,0,0,.04);
+      --xp-shadow-sm:     0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --xp-shadow:        0 4px 12px rgba(0,0,0,.07), 0 1px 3px rgba(0,0,0,.05);
+      --xp-font:          'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --xp-mono:          'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+    }
+
+    /* Dark mode tokens */
+    html.dark {
+      --xp-bg:            #0C0F14;
+      --xp-surface:       #141920;
+      --xp-border:        #1E2530;
+      --xp-border-strong: #2A3445;
+      --xp-text:          #E8EDF5;
+      --xp-text-2:        #9BA8BC;
+      --xp-text-3:        #5A6680;
+      --xp-shadow-xs:     0 1px 2px rgba(0,0,0,.25);
+      --xp-shadow-sm:     0 1px 3px rgba(0,0,0,.30), 0 1px 2px rgba(0,0,0,.20);
+      --xp-shadow:        0 4px 12px rgba(0,0,0,.40), 0 1px 3px rgba(0,0,0,.25);
+    }
+
+    /* ── Global base ───────────────────────────── */
+    html, body, #app {
+      font-family: var(--xp-font) !important;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body { background: var(--xp-bg) !important; }
+    #app > div { background: var(--xp-bg) !important; }
+
+    /* ── Header / Nav ──────────────────────────── */
+    header {
+      background: var(--xp-surface) !important;
+      border-bottom: 1px solid var(--xp-border) !important;
+      box-shadow: var(--xp-shadow-xs) !important;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header > div {
+      border-bottom: none !important;
+      height: var(--xp-nav-h);
+      align-items: center;
+    }
+
+    /* Nav links — tighten spacing, refine look */
+    header a, header button, header [role="button"] {
+      font-family: var(--xp-font) !important;
+      font-size: 13px !important;
+      font-weight: 500 !important;
+      letter-spacing: 0 !important;
+    }
+
+    /* ── Main content area ─────────────────────── */
+    main {
+      background: var(--xp-bg) !important;
+    }
+    main > * {
+      font-family: var(--xp-font) !important;
+    }
+
+    /* ── Typography ────────────────────────────── */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--xp-font) !important;
+      font-weight: 600 !important;
+      letter-spacing: -0.015em !important;
+      color: var(--xp-text) !important;
+    }
+    p, span:not([class*="icon"]):not([class*="lucide"]):not(.sr-only),
+    label, li, td, th {
+      font-family: var(--xp-font) !important;
+    }
+    code, pre, kbd, samp {
+      font-family: var(--xp-mono) !important;
+      font-size: 12px !important;
+    }
+
+    /* ── Cards / Panels ────────────────────────── */
+    .card,
+    [class*="rounded"][class*="border"],
+    [class*="shadow"][class*="border"] {
+      background: var(--xp-surface) !important;
+      border-color: var(--xp-border) !important;
+      border-radius: var(--xp-radius) !important;
+    }
+
+    /* ── Tables ────────────────────────────────── */
+    table {
+      border-collapse: collapse !important;
+      font-family: var(--xp-font) !important;
+      font-size: 13px !important;
+      width: 100%;
+    }
+    thead tr {
+      background: var(--xp-bg) !important;
+      border-bottom: 1px solid var(--xp-border-strong) !important;
+    }
+    th {
+      font-family: var(--xp-font) !important;
+      font-weight: 600 !important;
+      font-size: 11px !important;
+      letter-spacing: 0.055em !important;
+      text-transform: uppercase !important;
+      color: var(--xp-text-2) !important;
+      padding: 10px 14px !important;
+      white-space: nowrap;
+      border: none !important;
+      border-bottom: 1px solid var(--xp-border-strong) !important;
+      user-select: none;
+    }
+    td {
+      font-family: var(--xp-font) !important;
+      font-size: 13px !important;
+      padding: 9px 14px !important;
+      border: none !important;
+      border-bottom: 1px solid var(--xp-border) !important;
+      color: var(--xp-text) !important;
+      vertical-align: middle;
+    }
+    tbody tr:last-child td { border-bottom: none !important; }
+    tbody tr:hover { background: var(--xp-accent-dim) !important; }
+
+    /* ── Buttons ───────────────────────────────── */
+    button:not([class*="toggle"]):not([class*="switch"]),
+    [role="button"]:not([class*="toggle"]) {
+      font-family: var(--xp-font) !important;
+      font-size: 13px !important;
+      font-weight: 500 !important;
+      border-radius: var(--xp-radius-sm) !important;
+      transition: background 0.14s ease, border-color 0.14s ease, opacity 0.14s ease !important;
+    }
+
+    /* ── Form inputs ───────────────────────────── */
+    input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]),
+    select, textarea {
+      font-family: var(--xp-font) !important;
+      font-size: 13px !important;
+      border-radius: var(--xp-radius-sm) !important;
+      background: var(--xp-surface) !important;
+      border: 1px solid var(--xp-border-strong) !important;
+      color: var(--xp-text) !important;
+      transition: border-color 0.14s ease, box-shadow 0.14s ease !important;
+    }
+    input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):focus,
+    select:focus, textarea:focus {
+      border-color: var(--xp-accent) !important;
+      box-shadow: 0 0 0 3px var(--xp-accent-dim) !important;
+      outline: none !important;
+    }
+
+    /* ── Dividers ──────────────────────────────── */
+    hr { border-color: var(--xp-border) !important; }
+
+    /* ── Footer (mobile nav) ───────────────────── */
+    footer {
+      background: var(--xp-surface) !important;
+      border-top: 1px solid var(--xp-border) !important;
+    }
+    footer hr { display: none !important; }
+
+    /* ── Scrollbars ────────────────────────────── */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb {
+      background: var(--xp-border-strong);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: var(--xp-text-3); }
+    ::-webkit-scrollbar-corner { background: transparent; }
+
+    /* ── Selection ─────────────────────────────── */
+    ::selection {
+      background: var(--xp-accent-dim);
+      color: var(--xp-text);
+    }
+
+    /* ── Profit / Loss colors ──────────────────── */
+    :root {
+      --color-profit: #12BB7B;
+      --color-loss:   #EF5350;
+    }
+  </style>
+
+  <script>
+    (function() {
+      // Default to light mode — respect explicit user choice
+      var savedScheme = localStorage.getItem('vueuse-color-scheme');
+      if (!savedScheme || savedScheme === 'auto') {
+        localStorage.setItem('vueuse-color-scheme', 'light');
+      }
+
+      var navPatched = false;
+
+      function patchNavLogo() {
+        if (navPatched) return;
+        var allAnchors = document.querySelectorAll('a');
+        for (var i = 0; i < allAnchors.length; i++) {
+          var a = allAnchors[i];
+          if (a.querySelector('.xpli-logo')) { navPatched = true; return; }
+          var hasMask = a.querySelector('[class*="mask-"]');
+          var hasFreqText = a.textContent.includes('Freqtrade');
+          if (!hasMask && !hasFreqText) continue;
+
+          var children = a.children;
+          for (var j = 0; j < children.length; j++) {
+            children[j].classList.add('xpli-hide');
+          }
+
+          var logo = document.createElement('img');
+          logo.src = '/xplitrade_logo.png';
+          logo.alt = 'Xplitrade';
+          logo.className = 'xpli-logo';
+          a.insertBefore(logo, a.firstChild);
+          navPatched = true;
+          return;
+        }
+      }
+
+      function patchBranding() {
+        // Hide non-navbar robot mascot divs
+        var maskEls = document.querySelectorAll('[class*="mask-"]');
+        for (var i = 0; i < maskEls.length; i++) {
+          if (!maskEls[i].closest('a')) maskEls[i].classList.add('xpli-hide');
+        }
+
+        // Hide links to freqtrade.io or with Freqtrade text
+        var allLinks = document.querySelectorAll('a[href]');
+        for (var i = 0; i < allLinks.length; i++) {
+          var link = allLinks[i];
+          var href = link.getAttribute('href') || '';
+          var txt = link.textContent || '';
+          if (href.includes('freqtrade') || txt.toLowerCase().includes('freqtrade documentation')) {
+            var target = link.closest('p, li, div, span, td') || link;
+            target.classList.add('xpli-hide');
+          }
+        }
+
+        // Replace visible Freqtrade text nodes
+        var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+        var node;
+        while ((node = walker.nextNode())) {
+          if (node.nodeValue && (node.nodeValue.includes('Freqtrade') || node.nodeValue.includes('freqtrade'))) {
+            var p = node.parentElement;
+            if (p && p.classList.contains('xpli-hide')) continue;
+            node.nodeValue = node.nodeValue
+              .replace(/FreqtradeUI/g, 'XplitradeUI')
+              .replace(/Freqtrade/g, 'Xplitrade')
+              .replace(/freqtrade/g, 'xplitrade');
+          }
+        }
+      }
+
+      // Lock title — override Vue router
+      var titleEl = document.querySelector('title');
+      if (titleEl) {
+        new MutationObserver(function() {
+          if (document.title !== 'XplitradeUI') document.title = 'XplitradeUI';
+        }).observe(titleEl, { childList: true, subtree: true, characterData: true });
+      }
+      document.title = 'XplitradeUI';
+
+      var interval = setInterval(function() {
+        patchNavLogo();
+        patchBranding();
+      }, 200);
+
+      setTimeout(function() { clearInterval(interval); }, 20000);
+    })();
+  </script>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but XplitradeUI doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+  <div id="app" class="isolate"></div>
+</body>
+
+</html>
