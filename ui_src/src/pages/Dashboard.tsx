@@ -64,7 +64,7 @@ export function Dashboard() {
             </h1>
             <span className={`xp-badge ${running ? 'bg-xp-accent-dim text-xp-accent border border-xp-accent-border' : 'bg-black/[0.05] dark:bg-white/[0.06] text-xp-text-3 dark:text-xp-dtext-3'}`}>
               <span className={`w-1.5 h-1.5 rounded-full ${running ? 'bg-xp-accent' : 'bg-xp-text-3 dark:bg-xp-dtext-3'}`} />
-              {running ? 'Running' : config?.state ?? 'Unknown'}
+              {running ? 'Running' : config?.state || 'Webserver'}
             </span>
             {config?.dry_run && (
               <span className="xp-badge bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 border border-amber-200/60 dark:border-amber-700/30 text-xs">

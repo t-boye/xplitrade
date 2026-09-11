@@ -17,7 +17,6 @@ export function Chart() {
   const [tf, setTf] = useState('1h')
   const [trade, setTrade] = useState<{ open_rate: number; profit_ratio: number } | null>(null)
   const [loading, setLoading] = useState(false)
-  const [err, setErr] = useState('')
 
   const tok = () => localStorage.getItem('xp-token') ?? ''
 
@@ -80,29 +79,30 @@ export function Chart() {
   }, [theme])
 
   const load = async () => {
-    setLoading(true); setErr('')
+    setLoading(true)
     try {
-      const r = await fetch(`/api/v1/pair_history?pair=${encodeURIComponent(pair)}&timeframe=${tf}&limit=300`, {
-        headers: { Authorization: `Bearer ${tok()}` },
-      })
-      if (!r.ok) {
-        const body = await r.text().catch(() => r.statusText)
-        try {
-          const parsed = JSON.parse(body)
-          throw new Error(parsed.detail || `${r.status} ${r.statusText}`)
-        } catch (e) {
-          if (e instanceof SyntaxError) throw new Error(body || `${r.status} ${r.statusText}`)
-          throw e
-        }
-      }
+      const cfg = await api.config()
+      const strategy = cfg.strategy
+      if (!strategy) { setLoading(false); return }
+
+      const now = new Date()
+      const from = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000)
+      const fmt = (d: Date) => d.toISOString().slice(0, 10).replace(/-/g, '')
+      const timerange = `${fmt(from)}-${fmt(now)}`
+
+      const r = await fetch(
+        `/api/v1/pair_history?pair=${encodeURIComponent(pair)}&timeframe=${tf}&strategy=${encodeURIComponent(strategy)}&timerange=${timerange}`,
+        { headers: { Authorization: `Bearer ${tok()}` } },
+      )
+      if (!r.ok) { setLoading(false); return }
       const data = await r.json()
       const candles: CandlestickData[] = (data.data ?? []).map((c: number[]) => ({
         time: Math.floor(c[0] / 1000) as number,
         open: c[1], high: c[2], low: c[3], close: c[4],
       }))
       if (candles.length) { series.current?.setData(candles); chartApi.current?.timeScale().fitContent() }
-    } catch (e: any) {
-      if (!e.message?.includes('correct state')) setErr(e.message)
+    } catch {
+      // silently ignore — chart stays empty
     }
     finally { setLoading(false) }
   }
@@ -160,8 +160,6 @@ export function Chart() {
           </div>
         )}
       </div>
-
-      {err && <div className="text-xs text-xp-loss bg-xp-loss-bg rounded-md px-3 py-2 border border-xp-loss/15 shrink-0">{err}</div>}
 
       {/* Chart */}
       <div className="xp-card flex-1 overflow-hidden">

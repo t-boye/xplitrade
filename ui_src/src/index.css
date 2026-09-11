@@ -80,6 +80,12 @@
     box-shadow: 0 0 0 1px rgba(239,83,80,0.25);
   }
 
+  .xp-btn-primary:disabled,
+  .xp-btn-danger:disabled,
+  .xp-btn-ghost:disabled {
+    @apply opacity-40 cursor-not-allowed pointer-events-none;
+  }
+
   /* Label */
   .xp-label {
     @apply block text-xs font-medium uppercase tracking-[0.06em] text-xp-text-3 dark:text-xp-dtext-3;
