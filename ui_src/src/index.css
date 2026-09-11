@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    box-sizing: border-box;
+  }
+  html {
+    font-size: 13px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'cv01', 'cv02', 'cv03', 'cv04', 'ss01';
+  }
+  body {
+    @apply bg-xp-bg text-xp-text dark:bg-xp-dbg dark:text-xp-dtext;
+    line-height: 1.5;
+  }
+
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { @apply rounded; background: rgba(0,0,0,0.12); }
+  .dark ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); }
+
+  ::selection { @apply bg-xp-accent-dim text-xp-text dark:text-xp-dtext; }
+
+  .tabnum { font-variant-numeric: tabular-nums; }
+}
+
+@layer components {
+  /* Card */
+  .xp-card {
+    @apply bg-xp-surface dark:bg-xp-dsurf rounded-lg;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .dark .xp-card {
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.07), 0 1px 2px rgba(0,0,0,0.3);
+  }
+
+  /* Input */
+  .xp-input {
+    @apply bg-xp-surface dark:bg-xp-dsurf
+           text-xp-text dark:text-xp-dtext text-sm h-8 rounded-md px-3
+           focus:outline-none
+           placeholder:text-xp-text-3 dark:placeholder:text-xp-dtext-3
+           transition-all duration-100;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .xp-input:focus {
+    box-shadow: 0 0 0 1.5px #16C784, 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .dark .xp-input {
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 1px 2px rgba(0,0,0,0.2);
+  }
+  .dark .xp-input:focus {
+    box-shadow: 0 0 0 1.5px #16C784, 0 1px 2px rgba(0,0,0,0.2);
+  }
+
+  /* Button base */
+  .xp-btn {
+    @apply inline-flex items-center justify-center gap-1.5 h-8 px-3 text-sm font-medium rounded-md
+           transition-all duration-100 cursor-pointer select-none whitespace-nowrap;
+  }
+
+  .xp-btn-primary {
+    @apply xp-btn bg-xp-accent hover:bg-xp-accent-d text-white;
+    box-shadow: 0 1px 2px rgba(22,199,132,0.25), 0 0 0 1px rgba(22,199,132,0.6);
+  }
+
+  .xp-btn-ghost {
+    @apply xp-btn text-xp-text-2 dark:text-xp-dtext-2
+           hover:bg-black/[0.04] dark:hover:bg-white/[0.06]
+           hover:text-xp-text dark:hover:text-xp-dtext;
+  }
+
+  .xp-btn-danger {
+    @apply xp-btn text-xp-loss
+           hover:bg-xp-loss hover:text-white;
+    box-shadow: 0 0 0 1px rgba(239,83,80,0.25);
+  }
+
+  /* Label */
+  .xp-label {
+    @apply block text-xs font-medium uppercase tracking-[0.06em] text-xp-text-3 dark:text-xp-dtext-3;
+  }
+
+  /* Section divider */
+  .xp-divider {
+    @apply border-t border-black/[0.07] dark:border-white/[0.06];
+  }
+
+  /* Badge */
+  .xp-badge {
+    @apply inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs font-medium;
+  }
+
+  /* Profit / loss text */
+  .profit { @apply text-xp-profit font-medium tabnum; }
+  .loss   { @apply text-xp-loss font-medium tabnum; }
+
+  /* Table */
+  .xp-table { @apply w-full text-sm; }
+  .xp-th {
+    @apply px-4 py-2.5 text-left text-xs font-medium uppercase tracking-[0.06em]
+           text-xp-text-3 dark:text-xp-dtext-3 whitespace-nowrap
+           border-b border-black/[0.06] dark:border-white/[0.06];
+  }
+  .xp-td {
+    @apply px-4 py-2.5 border-b border-black/[0.04] dark:border-white/[0.04]
+           text-xp-text-2 dark:text-xp-dtext-2;
+  }
+  .xp-tr {
+    @apply transition-colors duration-75;
+  }
+  .xp-tr:hover .xp-td {
+    @apply bg-black/[0.015] dark:bg-white/[0.025];
+  }
+}

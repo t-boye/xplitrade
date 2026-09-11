@@ -1,4 +1,7 @@
 # Xplitrade rules
+node_modules/
+ui_src/node_modules/
+ui_src/.vite/
 config*.json
 *.sqlite
 *.sqlite-shm
