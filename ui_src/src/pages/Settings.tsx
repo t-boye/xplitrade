@@ -29,7 +29,7 @@ export function Settings() {
 
   const META = config ? [
     ['Bot Name',         config.bot_name],
-    ['State',            config.state],
+    ['State',            config.state || 'Webserver'],
     ['Mode',             config.dry_run ? 'Dry Run' : 'Live Trading'],
     ['Exchange',         config.exchange],
     ['Strategy',         config.strategy || '—'],
