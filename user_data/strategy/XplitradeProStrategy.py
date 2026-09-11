@@ -34,7 +34,7 @@ import numpy as np
 import talib.abstract as ta
 from pandas import DataFrame
 
-from freqtrade.strategy import DecimalParameter, IntParameter, IStrategy
+from xplitrade.strategy import DecimalParameter, IntParameter, IStrategy
 
 
 class XplitradeProStrategy(IStrategy):
