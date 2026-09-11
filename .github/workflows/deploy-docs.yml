@@ -39,7 +39,7 @@ jobs:
 
       - name: Fetch gh-pages branch
         run: |
-          git fetch origin gh-pages --depth=1
+          git fetch origin gh-pages --depth=1 || echo "No gh-pages branch yet — first deploy will create it"
 
       - name: Configure Git user
         run: |
