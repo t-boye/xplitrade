@@ -1,4 +1,4 @@
-# Strategy Customization
+﻿# Strategy Customization
 
 This page explains how to customize your strategies, add new indicators and set up trading rules.
 
@@ -847,7 +847,7 @@ This is where calling `self.dp.current_whitelist()` comes in handy to retrieve o
 
 ??? Note "Plotting with current_whitelist"
     Current whitelist is not supported for `plot-dataframe`, as this command is usually used by providing an explicit pairlist and would therefore make the return values of this method misleading.
-    It's also not supported for FreqUI visualization in [webserver mode](utils.md#webserver-mode), as the configuration for webserver mode doesn't require a pairlist to be set.
+    It's also not supported for XpliUI visualization in [webserver mode](utils.md#webserver-mode), as the configuration for webserver mode doesn't require a pairlist to be set.
 
 ### *get_pair_dataframe(pair, timeframe)*
 

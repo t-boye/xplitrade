@@ -211,6 +211,7 @@ class ApiServer(RPCHandler):
         from xplitrade.rpc.api_server.api_v1 import router as api_v1
         from xplitrade.rpc.api_server.api_v1 import router_public as api_v1_public
         from xplitrade.rpc.api_server.api_webserver import router as api_webserver
+        from xplitrade.rpc.api_server.api_webhook_signal import router as api_webhook_signal
         from xplitrade.rpc.api_server.api_ws import router as ws_router
         from xplitrade.rpc.api_server.deps import is_trading_mode, is_webserver_mode
         from xplitrade.rpc.api_server.web_ui import router_ui
@@ -275,6 +276,11 @@ class ApiServer(RPCHandler):
             prefix="/api/v1",
             tags=["Recursive Analysis", "Webserver"],
             dependencies=[Depends(http_basic_or_jwt_token), Depends(is_webserver_mode)],
+        )
+        app.include_router(
+            api_webhook_signal,
+            prefix="/api/v1",
+            tags=["Signals"],
         )
         app.include_router(ws_router, prefix="/api/v1")
         # UI Router MUST be last!

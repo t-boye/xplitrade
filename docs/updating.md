@@ -1,4 +1,4 @@
-# How to update
+﻿# How to update
 
 To update your xplitrade installation, please use one of the below methods, corresponding to your installation method.
 
@@ -40,7 +40,7 @@ git pull
 pip install -U -r requirements.txt
 pip install -e .
 
-# Ensure freqUI is at the latest version
+# Ensure XpliUI is at the latest version
 xplitrade install-ui 
 ```
 

@@ -1,4 +1,4 @@
-# Recursive analysis
+﻿# Recursive analysis
 
 This page explains how to validate your strategy for inaccuracies due to recursive issues with certain indicators.
 
@@ -24,8 +24,8 @@ Command settings:
 
 In addition to the recursive formula check, this command also carries out a simple lookahead bias check on the indicator values only. For a full lookahead check, use [Lookahead-analysis](lookahead-analysis.md).
 
-!!! Tip "Running recursive-analysis via freqUI"
-    `recursive-analysis` can also be ran through freqUI when running xplitrade in [webserver mode](utils.md#webserver-mode).
+!!! Tip "Running recursive-analysis via XpliUI"
+    `recursive-analysis` can also be ran through XpliUI when running xplitrade in [webserver mode](utils.md#webserver-mode).
     As the analysis can run for a while, it is executed as a background task.
 
 ## Recursive-analysis command reference

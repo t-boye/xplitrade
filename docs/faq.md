@@ -1,4 +1,4 @@
-# Xplitrade FAQ
+﻿# Xplitrade FAQ
 
 ## Supported Markets
 
@@ -315,4 +315,4 @@ If you're on an older version, please follow the [upgrade instructions](updating
 
 Xplitrade does not have a Crypto token offering.
 
-Token offerings you find on the internet referring Xplitrade, FreqAI or freqUI must be considered to be a scam, trying to exploit xplitrade's popularity for their own, nefarious gains.
+Token offerings you find on the internet referring Xplitrade, FreqAI or XpliUI must be considered to be a scam, trying to exploit xplitrade's popularity for their own, nefarious gains.

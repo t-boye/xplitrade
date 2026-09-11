@@ -1,39 +1,39 @@
-# FreqUI
+﻿# XpliUI
 
-Xplitrade provides a builtin webserver, which can serve [FreqUI](https://github.com/Xplitrade/frequi), the xplitrade frontend.
+Xplitrade provides a builtin webserver, which can serve [XpliUI](https://github.com/Xplitrade/XpliUI), the xplitrade frontend.
 
 By default, the UI is automatically installed as part of the installation (script, docker).
-freqUI can also be manually installed by using the `xplitrade install-ui` command.
-This same command can also be used to update freqUI to new releases.
+XpliUI can also be manually installed by using the `xplitrade install-ui` command.
+This same command can also be used to update XpliUI to new releases.
 
 Once the bot is started in trade / dry-run mode (with `xplitrade trade`) - the UI will be available under the configured API port (by default `http://127.0.0.1:8080`).
 
-??? Note "Looking to contribute to freqUI?"
-    Developers should not use this method, but instead clone the corresponding use the method described in the [freqUI repository](https://github.com/Xplitrade/frequi) to get the source-code of freqUI. A working installation of node will be required to build the frontend.
+??? Note "Looking to contribute to XpliUI?"
+    Developers should not use this method, but instead clone the corresponding use the method described in the [XpliUI repository](https://github.com/Xplitrade/XpliUI) to get the source-code of XpliUI. A working installation of node will be required to build the frontend.
 
-!!! tip "freqUI is not required to run xplitrade"
-    freqUI is an optional component of xplitrade, and is not required to run the bot.
+!!! tip "XpliUI is not required to run xplitrade"
+    XpliUI is an optional component of xplitrade, and is not required to run the bot.
     It is a frontend that can be used to monitor the bot and to interact with it - but xplitrade itself will work perfectly fine without it.
 
 ## Configuration
 
-FreqUI does not have it's own configuration file - but assumes a working setup for the [rest-api](rest-api.md) is available.
-Please refer to the corresponding documentation page to get setup with freqUI
+XpliUI does not have it's own configuration file - but assumes a working setup for the [rest-api](rest-api.md) is available.
+Please refer to the corresponding documentation page to get setup with XpliUI
 
 ## UI
 
-FreqUI is a modern, responsive web application that can be used to monitor and interact with your bot.
+XpliUI is a modern, responsive web application that can be used to monitor and interact with your bot.
 
-FreqUI provides a light, as well as a dark theme.
+XpliUI provides a light, as well as a dark theme.
 Themes can be easily switched via a prominent button at the top of the page.
 The theme of the screenshots on this page will adapt to the selected documentation Theme, so to see the dark (or light) version, please switch the theme of the Documentation.
 
 ### Login
 
-The below screenshot shows the login screen of freqUI.
+The below screenshot shows the login screen of XpliUI.
 
-![FreqUI - login](assets/frequi-login-CORS.png#only-dark)
-![FreqUI - login](assets/frequi-login-CORS-light.png#only-light)
+![XpliUI - login](assets/XpliUI-login-CORS.png#only-dark)
+![XpliUI - login](assets/XpliUI-login-CORS-light.png#only-light)
 
 !!! Hint "CORS"
     The Cors error shown in this screenshot is due to the fact that the UI is running on a different port than the API, and [CORS](#cors) has not been setup correctly yet.
@@ -43,8 +43,8 @@ The below screenshot shows the login screen of freqUI.
 The trade view allows you to visualize the trades that the bot is making and to interact with the bot.
 On this page, you can also interact with the bot by starting and stopping it and - if configured - force trade entries and exits.
 
-![FreqUI - trade view](assets/freqUI-trade-pane-dark.png#only-dark)
-![FreqUI - trade view](assets/freqUI-trade-pane-light.png#only-light)
+![XpliUI - trade view](assets/XpliUI-trade-pane-dark.png#only-dark)
+![XpliUI - trade view](assets/XpliUI-trade-pane-light.png#only-light)
 
 ### Dashboard
 
@@ -65,13 +65,13 @@ Only beyond this point, the wallet balance is expected to be accurate.
 
 ### Plot Configurator
 
-FreqUI Plots can be configured either via a `plot_config` configuration object in the strategy (which can be loaded via "from strategy" button) or via the UI.
+XpliUI Plots can be configured either via a `plot_config` configuration object in the strategy (which can be loaded via "from strategy" button) or via the UI.
 Multiple plot configurations can be created and switched at will - allowing for flexible, different views into your charts.
 
 The plot configuration can be accessed via the "Plot Configurator" (Cog icon) button in the top right corner of the trade view.
 
-![FreqUI - plot configuration](assets/freqUI-plot-configurator-dark.png#only-dark)
-![FreqUI - plot configuration](assets/freqUI-plot-configurator-light.png#only-light)
+![XpliUI - plot configuration](assets/XpliUI-plot-configurator-dark.png#only-dark)
+![XpliUI - plot configuration](assets/XpliUI-plot-configurator-light.png#only-light)
 
 ### Settings
 
@@ -84,8 +84,8 @@ Things you can change (among others):
 * Candle colors (up/down -> red/green)
 * Enable / disable in-app notification types
 
-![FreqUI - Settings view](assets/frequi-settings-dark.png#only-dark)
-![FreqUI - Settings view](assets/frequi-settings-light.png#only-light)
+![XpliUI - Settings view](assets/XpliUI-settings-dark.png#only-dark)
+![XpliUI - Settings view](assets/XpliUI-settings-light.png#only-light)
 
 ## Webserver mode
 
@@ -103,8 +103,8 @@ This view allows you to backtest strategies and visualize the results.
 
 You can also load and visualize previous backtest results, as well as compare the results with each other.
 
-![FreqUI - Backtesting](assets/freqUI-backtesting-dark.png#only-dark)
-![FreqUI - Backtesting](assets/freqUI-backtesting-light.png#only-light)
+![XpliUI - Backtesting](assets/XpliUI-backtesting-dark.png#only-dark)
+![XpliUI - Backtesting](assets/XpliUI-backtesting-light.png#only-light)
 
 
 --8<-- "includes/cors.md"

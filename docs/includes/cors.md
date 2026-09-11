@@ -1,6 +1,6 @@
-## CORS
+﻿## CORS
 
-This whole section is only necessary in cross-origin cases (where you multiple bot API's running on `localhost:8081`, `localhost:8082`, ...), and want to combine them into one FreqUI instance.
+This whole section is only necessary in cross-origin cases (where you multiple bot API's running on `localhost:8081`, `localhost:8082`, ...), and want to combine them into one XpliUI instance.
 
 ??? info "Technical explanation"
     All web-based front-ends are subject to [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) - Cross-Origin Resource Sharing.
@@ -10,19 +10,19 @@ This whole section is only necessary in cross-origin cases (where you multiple b
 Users can allow access from different origin URL's to the bot API via the `CORS_origins` configuration setting.
 It consists of a list of allowed URL's that are allowed to consume resources from the bot's API.
 
-Assuming your application is deployed as `https://frequi.Xplitrade.io/home/` - this would mean that the following configuration becomes necessary:
+Assuming your application is deployed as `https://XpliUI.Xplitrade.io/home/` - this would mean that the following configuration becomes necessary:
 
 ```jsonc
 {
     //...
     "jwt_secret_key": "somethingRandomSomethingRandom123",
-    "CORS_origins": ["https://frequi.Xplitrade.io"],
+    "CORS_origins": ["https://XpliUI.Xplitrade.io"],
     //...
 }
 ```
 
-In the following (pretty common) case, FreqUI is accessible on `http://localhost:8080/trade` (this is what you see in your navbar when navigating to freqUI).
-![freqUI url](assets/frequi_url.png)
+In the following (pretty common) case, XpliUI is accessible on `http://localhost:8080/trade` (this is what you see in your navbar when navigating to XpliUI).
+![XpliUI url](assets/XpliUI_url.png)
 
 The correct configuration for this case is `http://localhost:8080` - the main part of the URL including the port.
 

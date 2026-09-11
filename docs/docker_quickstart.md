@@ -1,4 +1,4 @@
-# Using Xplitrade with Docker
+﻿# Using Xplitrade with Docker
 
 This page explains how to run the bot with Docker. It is not meant to work out of the box. You'll still need to read through the documentation and understand how to properly configure it.
 
@@ -77,13 +77,13 @@ docker compose up -d
 
 #### Accessing the UI
 
-If you've selected to enable FreqUI in the `new-config` step, you will have freqUI available at port `localhost:8080`.
+If you've selected to enable XpliUI in the `new-config` step, you will have XpliUI available at port `localhost:8080`.
 
 You can now access the UI by typing localhost:8080 in your browser.
 
 ??? Note "UI Access on a remote server"
     If you're running on a VPS, you should consider using either a ssh tunnel, or setup a VPN (openVPN, wireguard) to connect to your bot.
-    This will ensure that freqUI is not directly exposed to the internet, which is not recommended for security reasons (freqUI does not support https out of the box).
+    This will ensure that XpliUI is not directly exposed to the internet, which is not recommended for security reasons (XpliUI does not support https out of the box).
     Setup of these tools is not part of this tutorial, however many good tutorials can be found on the internet.
     Please also read the [API configuration with docker](rest-api.md#configuration-with-docker) section to learn more about this configuration.
 
@@ -126,7 +126,7 @@ All xplitrade arguments will be available by running `docker compose run --rm xp
 !!! Warning "`docker compose` for trade commands"
     Trade commands (`xplitrade trade <...>`) should not be ran via `docker compose run` - but should use `docker compose up -d` instead.
     This makes sure that the container is properly started (including port forwardings) and will make sure that the container will restart after a system reboot.
-    If you intend to use freqUI, please also ensure to adjust the [configuration accordingly](rest-api.md#configuration-with-docker), otherwise the UI will not be available.
+    If you intend to use XpliUI, please also ensure to adjust the [configuration accordingly](rest-api.md#configuration-with-docker), otherwise the UI will not be available.
 
 !!! Note "`docker compose run --rm`"
     Including `--rm` will remove the container after completion, and is highly recommended for all modes except trading mode (running with `xplitrade trade` command).

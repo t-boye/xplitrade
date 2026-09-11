@@ -1,4 +1,4 @@
-# Plotting
+﻿# Plotting
 
 This page explains how to plot prices, indicators and profits.
 
@@ -8,7 +8,7 @@ This page explains how to plot prices, indicators and profits.
 
     While there are no immediate plans to remove them, they are not actively maintained - and may be removed short-term should major changes be required to keep them working.
     
-    Please use [FreqUI](freq-ui.md) for plotting needs, which doesn't struggle with the same performance problems.
+    Please use [XpliUI](freq-ui.md) for plotting needs, which doesn't struggle with the same performance problems.
 
 ## Installation / Setup
 

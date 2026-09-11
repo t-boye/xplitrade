@@ -1,4 +1,4 @@
-# Xplitrade Strategies 101: A Quick Start for Strategy Development
+﻿# Xplitrade Strategies 101: A Quick Start for Strategy Development
 
 For the purposes of this quick start, we are assuming you are familiar with the basics of trading, and have read the 
 [Xplitrade basics](bot-basics.md) page.
@@ -167,7 +167,7 @@ If there is any significant difference, verify that your entry and exit signals 
 
 Once your bot is running in dry or live mode, Xplitrade has six mechanisms to control or monitor a running bot:
 
-- **[FreqUI](freq-ui.md)**: The easiest to get started with, FreqUI is a web interface to see and control current activity of your bot.
+- **[XpliUI](freq-ui.md)**: The easiest to get started with, XpliUI is a web interface to see and control current activity of your bot.
 - **[Telegram](telegram-usage.md)**: On mobile devices, Telegram integration is available to get alerts about your bot activity and to control certain aspects.
 - **[FTUI](https://github.com/Xplitrade/ftui)**: FTUI is a terminal (command line) interface to Xplitrade, and allows monitoring of a running bot only.
 - **[xplitrade-client](rest-api.md#consuming-the-api)**: A python implementation of the REST API, making it easy to make requests and consume bot responses from your python apps or the command line.

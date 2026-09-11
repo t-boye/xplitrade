@@ -1,4 +1,4 @@
-# Utility Subcommands
+﻿# Utility Subcommands
 
 Besides the Live-Trade and Dry-Run run modes, the `backtesting` and `hyperopt` optimization subcommands, and the `download-data` subcommand which prepares historical data, the bot contains a number of utility subcommands. They are described in this section.
 
@@ -302,9 +302,9 @@ Please refer to the [corresponding documentation](advanced-setup.md#use-a-differ
     There may still be bugs - so if you happen to stumble across these, please report them as github issues, thanks.
 
 Run xplitrade in webserver mode.
-Xplitrade will start the webserver and allow FreqUI to start and control backtesting processes.
+Xplitrade will start the webserver and allow XpliUI to start and control backtesting processes.
 This has the advantage that data will not be reloaded between backtesting runs (as long as timeframe and timerange remain identical).
-FreqUI will also show the backtesting results.
+XpliUI will also show the backtesting results.
 
 --8<-- "commands/webserver.md"
 

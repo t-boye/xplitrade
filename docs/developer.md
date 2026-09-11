@@ -1,4 +1,4 @@
-# Development Help
+﻿# Development Help
 
 This page is intended for developers of Xplitrade, people who want to contribute to the Xplitrade codebase or documentation, or people who want to understand the source code of the application they're running.
 
@@ -486,10 +486,10 @@ To keep the release-log short, best wrap the full git changelog into a collapsib
 </details>
 ```
 
-### FreqUI release
+### XpliUI release
 
-If FreqUI has been updated substantially, make sure to create a release before merging the release branch.
-Make sure that freqUI CI on the release is finished and passed before merging the release.
+If XpliUI has been updated substantially, make sure to create a release before merging the release branch.
+Make sure that XpliUI CI on the release is finished and passed before merging the release.
 
 ### Create github release / tag
 

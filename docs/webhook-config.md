@@ -1,6 +1,15 @@
 # Webhook usage
 
-## Configuration
+Xplitrade has two independent webhook systems:
+
+- **Outgoing webhooks** — Xplitrade sends notifications to an external URL (Discord, IFTTT, your own server) when trades open, close, or status changes.
+- **Incoming signal webhook** — External sources send a POST request to Xplitrade to trigger a trade. [Jump to incoming signal webhook →](#incoming-signal-webhook)
+
+---
+
+## Outgoing webhooks
+
+### Configuration
 
 Enable webhooks by adding a webhook-section to your configuration file, and setting `webhook.enabled` to `true`.
 
@@ -304,4 +313,114 @@ Custom messages can be sent from a strategy to Discord endpoints via the datapro
         "webhook_url": "https://discord.com/api/webhooks/<Your webhook URL ...>",
         "allow_custom_messages": true,
     },
+```
+
+---
+
+## Incoming Signal Webhook
+
+Xplitrade has a built-in **incoming** signal endpoint. Any external source — your own scripts, a mobile app, an alert service — can POST a signal to trigger a buy, sell, or emergency exit without needing to authenticate with JWT.
+
+### Enable in config.json
+
+```json
+"webhook_signal": {
+    "enabled": true,
+    "secret": "CHANGE_THIS_TO_A_RANDOM_SECRET"
+}
+```
+
+!!! warning "Keep the secret safe"
+    Choose a strong random string (32+ characters). Anyone who knows this secret can trigger trades on your bot.
+
+### Endpoint
+
+```
+POST /api/v1/webhook/signal
+```
+
+**Required header:**
+
+```
+X-Xplitrade-Token: <your_secret>
+```
+
+### Actions
+
+#### Buy (open a long position)
+
+```json
+{
+    "action": "buy",
+    "pair": "BTC/USDT",
+    "stake_amount": 100,
+    "tag": "my_signal"
+}
+```
+
+#### Sell (close open position on a pair)
+
+```json
+{
+    "action": "sell",
+    "pair": "BTC/USDT"
+}
+```
+
+#### Close all (emergency — exits every open trade)
+
+```json
+{
+    "action": "close_all"
+}
+```
+
+### Full payload reference
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `action` | `"buy"` \| `"sell"` \| `"close_all"` | Yes | What to do |
+| `pair` | string e.g. `"BTC/USDT"` | For buy/sell | Trading pair |
+| `stake_amount` | float | No | USDT amount (defaults to `stake_amount` in config) |
+| `price` | float | No | Limit price — omit for market order |
+| `tag` | string | No | Label shown in trade history and logs |
+
+### Example — trigger from command line
+
+```bash
+curl -X POST http://YOUR_VPS_IP:8080/api/v1/webhook/signal \
+  -H "Content-Type: application/json" \
+  -H "X-Xplitrade-Token: CHANGE_THIS_TO_A_RANDOM_SECRET" \
+  -d '{"action": "buy", "pair": "ETH/USDT", "tag": "manual_signal"}'
+```
+
+### Example — trigger from Python
+
+```python
+import requests
+
+XPLITRADE_URL = "http://YOUR_VPS_IP:8080"
+SECRET = "CHANGE_THIS_TO_A_RANDOM_SECRET"
+
+def send_signal(action, pair=None, stake_amount=None, tag=None):
+    payload = {"action": action}
+    if pair:
+        payload["pair"] = pair
+    if stake_amount:
+        payload["stake_amount"] = stake_amount
+    if tag:
+        payload["tag"] = tag
+
+    resp = requests.post(
+        f"{XPLITRADE_URL}/api/v1/webhook/signal",
+        json=payload,
+        headers={"X-Xplitrade-Token": SECRET},
+    )
+    return resp.json()
+
+# Buy BTC
+send_signal("buy", pair="BTC/USDT", stake_amount=100, tag="python_script")
+
+# Close all positions (emergency)
+send_signal("close_all")
 ```

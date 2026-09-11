@@ -8,9 +8,11 @@ nav:
     - Home: index.md
     - Quickstart with Docker: docker_quickstart.md
     - Installation: installation.md
+    - Live Deployment Guide: live-deployment.md
     - Xplitrade Basics: bot-basics.md
     - Configuration: configuration.md
     - Strategy Quickstart: strategy-101.md
+    - XplitradeProStrategy: xplitrade-pro-strategy.md
     - Strategy Customization: strategy-customization.md
     - Strategy Callbacks: strategy-callbacks.md
     - Stoploss: stoploss.md
@@ -18,9 +20,9 @@ nav:
     - Start the bot: bot-usage.md
     - Control the bot:
         - Telegram: telegram-usage.md
-        - freqUI: freq-ui.md
+        - XpliUI: freq-ui.md
         - REST API: rest-api.md
-        - Web Hook: webhook-config.md
+        - Webhooks (outgoing + signals): webhook-config.md
     - Data Downloading: data-download.md
     - Backtesting: backtesting.md
     - Hyperopt: hyperopt.md

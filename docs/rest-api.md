@@ -1,8 +1,8 @@
-# REST API
+﻿# REST API
 
-## FreqUI
+## XpliUI
 
-FreqUI now has it's own dedicated [documentation section](freq-ui.md) - please refer to that section for all information regarding the FreqUI.
+XpliUI now has it's own dedicated [documentation section](freq-ui.md) - please refer to that section for all information regarding the XpliUI.
 
 ## Configuration
 
@@ -30,7 +30,7 @@ Sample configuration:
 
 ??? Note "API/UI Access on a remote servers"
     If you're running on a VPS, you should consider using either a ssh tunnel, or setup a VPN (openVPN, wireguard) to connect to your bot.
-    This will ensure that freqUI is not directly exposed to the internet, which is not recommended for security reasons (freqUI does not support https out of the box).
+    This will ensure that XpliUI is not directly exposed to the internet, which is not recommended for security reasons (XpliUI does not support https out of the box).
     Setup of these tools is not part of this tutorial, however many good tutorials can be found on the internet.
 
 You can then access the API by going to `http://127.0.0.1:8080/api/v1/ping` in a browser to check if the API is running correctly.

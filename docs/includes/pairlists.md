@@ -1,4 +1,4 @@
-## Pairlists and Pairlist Handlers
+﻿## Pairlists and Pairlist Handlers
 
 Pairlist Handlers define the list of pairs (pairlist) that the bot should trade. They are configured in the `pairlists` section of the configuration settings.
 
@@ -41,7 +41,7 @@ You may also use something like `.*DOWN/BTC` or `.*UP/BTC` to exclude leveraged 
 * [`VolatilityFilter`](#volatilityfilter)
 
 !!! Tip "Testing pairlists"
-    Pairlist configurations can be quite tricky to get right. Best use freqUI in [webserver mode](freq-ui.md#webserver-mode) or the [`test-pairlist`](utils.md#test-pairlist) utility sub-command to test your Pairlist configuration quickly.
+    Pairlist configurations can be quite tricky to get right. Best use XpliUI in [webserver mode](freq-ui.md#webserver-mode) or the [`test-pairlist`](utils.md#test-pairlist) utility sub-command to test your Pairlist configuration quickly.
 
 #### Static Pair List
 

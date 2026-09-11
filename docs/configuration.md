@@ -1,4 +1,4 @@
-# Configure the bot
+﻿# Configure the bot
 
 Xplitrade has many configurable features and possibilities.
 By default, these settings are configured via the configuration file (see below).
@@ -254,7 +254,10 @@ Mandatory parameters are marked as **Required**, which means that they are requi
 | `webhook.exit_fill` | Payload to send on exit order filled. Only required if `webhook.enabled` is `true`. See the [webhook documentation](webhook-config.md) for more details. <br> **Datatype:** String
 | `webhook.status` | Payload to send on status calls. Only required if `webhook.enabled` is `true`. See the [webhook documentation](webhook-config.md) for more details. <br> **Datatype:** String
 | `webhook.allow_custom_messages` | Enable the sending of Webhook messages from strategies via the dataprovider.send_msg() function. <br> **Datatype:** Boolean
-| | **Rest API / FreqUI / Producer-Consumer**
+| | **Incoming Signal Webhook**
+| `webhook_signal.enabled` | Enable the incoming signal webhook endpoint (`POST /api/v1/webhook/signal`). Allows external scripts, apps, or alert services to trigger trades. <br> **Datatype:** Boolean
+| `webhook_signal.secret` | Secret token callers must supply in the `X-Xplitrade-Token` header. Use a strong random string (32+ characters). <br>**Keep it in secret, do not disclose publicly.** <br> **Datatype:** String
+| | **Rest API / XpliUI / Producer-Consumer**
 | `api_server.enabled` | Enable usage of API Server. See the [API Server documentation](rest-api.md) for more details. <br> **Datatype:** Boolean
 | `api_server.listen_ip_address` | Bind IP address. See the [API Server documentation](rest-api.md) for more details. <br> **Datatype:** IPv4
 | `api_server.listen_port` | Bind Port. See the [API Server documentation](rest-api.md) for more details. <br>**Datatype:** Integer between 1024 and 65535

@@ -1,4 +1,4 @@
-# Strategy Callbacks
+﻿# Strategy Callbacks
 
 While the main strategy functions (`populate_indicators()`, `populate_entry_trend()`, `populate_exit_trend()`) should be used in a vectorized way, and are only called [once during backtesting](bot-basics.md#backtesting-hyperopt-execution-logic), callbacks are called "whenever needed".
 
@@ -1252,7 +1252,7 @@ class AwesomeStrategy(IStrategy):
 
 ## Plot annotations callback
 
-The plot annotations callback is called whenever freqUI requests data to display a chart.
+The plot annotations callback is called whenever XpliUI requests data to display a chart.
 This callback has no meaning in the trade cycle context and is only used for charting purposes.
 
 The strategy can then return a list of `AnnotationType` objects to be displayed on the chart.
@@ -1272,7 +1272,7 @@ Currently two types of annotations are supported, `area` and `line`.
     "y_start": 94000.2,  // Price / y axis value
     "y_end": 98000, // Price / y axis value
     "color": "",
-    "z_level": 5, // z-level, higher values are drawn on top of lower values. Positions relative to the Chart elements need to be set in freqUI.
+    "z_level": 5, // z-level, higher values are drawn on top of lower values. Positions relative to the Chart elements need to be set in XpliUI.
     "label": "some label"
 }
 ```
@@ -1287,7 +1287,7 @@ Currently two types of annotations are supported, `area` and `line`.
     "y_start": 94000.2,  // Price / y axis value
     "y_end": 98000, // Price / y axis value
     "color": "",
-    "z_level": 5, // z-level, higher values are drawn on top of lower values. Positions relative to the Chart elements need to be set in freqUI.
+    "z_level": 5, // z-level, higher values are drawn on top of lower values. Positions relative to the Chart elements need to be set in XpliUI.
     "label": "some label",
     "width": 2, // Optional, line width in pixels. Defaults to 1
     "line_style": "dashed", // Optional, can be "solid", "dashed" or "dotted". Defaults to "solid"
@@ -1303,7 +1303,7 @@ Currently two types of annotations are supported, `area` and `line`.
     "x": "2024-01-01 15:00:00", // Start date of the point
     "y": 94000.2,  // Price / y axis value
     "color": "",
-    "z_level": 5, // z-level, higher values are drawn on top of lower values. Positions relative to the Chart elements need to be set in freqUI.
+    "z_level": 5, // z-level, higher values are drawn on top of lower values. Positions relative to the Chart elements need to be set in XpliUI.
     "label": "some label",
     "size": 2, // Optional, line width in pixels. Defaults to 10
     "shape": "circle", // Optional, can be "circle", "rect", "roundRect", "triangle", "pin", "arrow", "none".
@@ -1362,8 +1362,8 @@ Entries will be validated, and won't be passed to the UI if they don't correspon
 
 ### Plot annotations example
 
-![FreqUI - plot Annotations](assets/freqUI-chart-annotations-dark.png#only-dark)
-![FreqUI - plot Annotations](assets/freqUI-chart-annotations-light.png#only-light)
+![XpliUI - plot Annotations](assets/XpliUI-chart-annotations-dark.png#only-dark)
+![XpliUI - plot Annotations](assets/XpliUI-chart-annotations-light.png#only-light)
 
 ??? Info "Code used for the plot above"
     This is an example code and should be treated as such.

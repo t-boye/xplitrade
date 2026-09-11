@@ -1,4 +1,4 @@
-``` output
+﻿``` output
 usage: xplitrade [-h] [-V]
                  {trade,create-userdir,new-config,show-config,new-strategy,download-data,convert-data,convert-trade-data,trades-to-ohlcv,list-data,backtesting,backtesting-show,backtesting-analysis,edge,hyperopt,hyperopt-list,hyperopt-show,list-exchanges,list-markets,list-pairs,list-strategies,list-hyperoptloss,list-freqaimodels,list-timeframes,show-trades,test-pairlist,convert-db,install-ui,plot-dataframe,plot-profit,webserver,strategy-updater,lookahead-analysis,recursive-analysis} ...
 
@@ -34,7 +34,7 @@ positional arguments:
     show-trades         Show trades.
     test-pairlist       Test your pairlist configuration.
     convert-db          Migrate database to different system
-    install-ui          Install FreqUI
+    install-ui          Install XpliUI
     plot-dataframe      Plot candles with indicators.
     plot-profit         Generate plot showing profits.
     webserver           Webserver module.

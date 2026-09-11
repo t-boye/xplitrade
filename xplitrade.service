@@ -1,13 +1,31 @@
 [Unit]
-Description=Xplitrade Daemon
+Description=Xplitrade Trading Bot
 After=network.target
+Wants=network-online.target
 
 [Service]
-# Set WorkingDirectory and ExecStart to your file paths accordingly
-# NOTE: %h will be resolved to /home/<username>
-WorkingDirectory=%h/Xplitrade
-ExecStart=/usr/bin/Xplitrade trade
+# ── Paths ────────────────────────────────────────────────────────────────────
+# %h resolves to /home/<your_username>
+# Adjust these two lines if you installed Xplitrade somewhere else
+WorkingDirectory=%h/xplitrade
+ExecStart=%h/.local/bin/xplitrade trade -c user_data/config.json
+
+# ── Restart policy ───────────────────────────────────────────────────────────
+# Restart the bot on any failure; give up after 5 crashes in 1 minute
 Restart=on-failure
+RestartSec=10
+StartLimitInterval=1min
+StartLimitBurst=5
+
+# ── Watchdog ─────────────────────────────────────────────────────────────────
+# Kill and restart if bot stops sending heartbeats for 60 seconds
+WatchdogSec=60
+
+# ── Logging ──────────────────────────────────────────────────────────────────
+# View logs with:  journalctl -u xplitrade -f
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=xplitrade
 
 [Install]
 WantedBy=default.target
