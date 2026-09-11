@@ -17,6 +17,7 @@ export function Chart() {
   const [tf, setTf] = useState('1h')
   const [trade, setTrade] = useState<{ open_rate: number; profit_ratio: number } | null>(null)
   const [loading, setLoading] = useState(false)
+  const [noStrategy, setNoStrategy] = useState(false)
 
   const tok = () => localStorage.getItem('xp-token') ?? ''
 
@@ -46,8 +47,7 @@ export function Chart() {
       crosshair: { mode: 1 },
       rightPriceScale: { borderColor: c.border },
       timeScale: { borderColor: c.border, timeVisible: true, secondsVisible: false },
-      width: chartRef.current.clientWidth,
-      height: chartRef.current.clientHeight,
+      autoSize: true,
     })
     series.current = chart.addCandlestickSeries({
       upColor: c.up, downColor: c.down,
@@ -55,12 +55,7 @@ export function Chart() {
       wickUpColor: c.wick, wickDownColor: c.wick,
     })
     chartApi.current = chart
-
-    const ro = new ResizeObserver(() => {
-      if (chartRef.current) chart.resize(chartRef.current.clientWidth, chartRef.current.clientHeight)
-    })
-    ro.observe(chartRef.current)
-    return () => { ro.disconnect(); chart.remove() }
+    return () => { chart.remove() }
   }, [])
 
   useEffect(() => {
@@ -83,7 +78,8 @@ export function Chart() {
     try {
       const cfg = await api.config()
       const strategy = cfg.strategy
-      if (!strategy) { setLoading(false); return }
+      if (!strategy) { setNoStrategy(true); setLoading(false); return }
+      setNoStrategy(false)
 
       const now = new Date()
       const from = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000)
@@ -162,8 +158,14 @@ export function Chart() {
       </div>
 
       {/* Chart */}
-      <div className="xp-card flex-1 overflow-hidden">
+      <div className="xp-card flex-1 overflow-hidden relative">
         <div ref={chartRef} className="w-full h-full" />
+        {noStrategy && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2" style={{ zIndex: 10, background: 'var(--chart-overlay-bg, rgba(17,17,17,0.92))' }}>
+            <span className="text-sm font-medium text-xp-text dark:text-xp-dtext">No strategy configured</span>
+            <span className="text-xs text-xp-text-3 dark:text-xp-dtext-3">Chart data requires a strategy to be set in your bot config</span>
+          </div>
+        )}
       </div>
     </div>
   )

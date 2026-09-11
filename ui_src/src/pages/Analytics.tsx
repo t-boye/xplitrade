@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { createChart, ColorType, type IChartApi, type ISeriesApi } from 'lightweight-charts'
+import { createChart, ColorType, type IChartApi, type ISeriesApi, type Time } from 'lightweight-charts'
 import { api, type Profit, type PairPerformance } from '../api/client'
 import { useTheme } from '../components/ThemeProvider'
 
@@ -30,6 +30,7 @@ export function Analytics() {
   const [profit, setProfit] = useState<Profit | null>(null)
   const [performance, setPerformance] = useState<PairPerformance[]>([])
   const [loading, setLoading] = useState(true)
+  const [hasEquityData, setHasEquityData] = useState(false)
 
   useEffect(() => {
     if (!chartRef.current) return
@@ -39,8 +40,7 @@ export function Analytics() {
       grid: { vertLines: { color: c.grid }, horzLines: { color: c.grid } },
       rightPriceScale: { borderColor: c.border },
       timeScale: { borderColor: c.border, timeVisible: true, secondsVisible: false },
-      width: chartRef.current.clientWidth,
-      height: chartRef.current.clientHeight,
+      autoSize: true,
     })
     lineSeries.current = chart.addLineSeries({
       color: '#16C784',
@@ -50,11 +50,7 @@ export function Analytics() {
       priceLineVisible: false,
     })
     chartApi.current = chart
-    const ro = new ResizeObserver(() => {
-      if (chartRef.current) chart.resize(chartRef.current.clientWidth, chartRef.current.clientHeight)
-    })
-    ro.observe(chartRef.current)
-    return () => { ro.disconnect(); chart.remove() }
+    return () => { chart.remove() }
   }, [])
 
   useEffect(() => {
@@ -83,11 +79,12 @@ export function Analytics() {
         let cum = 0
         const points = closed.map(t => {
           cum += t.profit_abs
-          return { time: Math.floor(t.close_timestamp! / 1000) as unknown as import('lightweight-charts').Time, value: +cum.toFixed(6) }
+          return { time: Math.floor(t.close_timestamp! / 1000) as unknown as Time, value: +cum.toFixed(6) }
         })
         if (points.length) {
           lineSeries.current?.setData(points)
           chartApi.current?.timeScale().fitContent()
+          setHasEquityData(true)
         }
       }
       setLoading(false)
@@ -161,7 +158,15 @@ export function Analytics() {
           <span className="text-sm font-semibold text-xp-text dark:text-xp-dtext">Equity Curve</span>
           <span className="text-xs text-xp-text-3 dark:text-xp-dtext-3 ml-2">cumulative P&L over closed trades</span>
         </div>
-        <div ref={chartRef} className="w-full" style={{ height: 220 }} />
+        <div className="relative" style={{ height: 220 }}>
+          <div ref={chartRef} className="w-full h-full" />
+          {!loading && !hasEquityData && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-1.5" style={{ zIndex: 10 }}>
+              <span className="text-sm text-xp-text-3 dark:text-xp-dtext-3">No closed trades yet</span>
+              <span className="text-xs text-xp-text-3 dark:text-xp-dtext-3 opacity-60">Equity curve will appear once trades close</span>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Per-pair table */}
