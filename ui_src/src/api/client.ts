@@ -103,6 +103,13 @@ export interface LogsResponse {
   log_count: number
 }
 
+export interface PairPerformance {
+  pair: string
+  profit_ratio: number
+  profit_abs: number
+  count: number
+}
+
 class ApiClient {
   private token: string | null = localStorage.getItem('xp-token')
   private refreshToken: string | null = localStorage.getItem('xp-refresh')
@@ -201,6 +208,7 @@ class ApiClient {
   trades = (limit = 100, offset = 0) =>
     this.request<TradesResponse>(`/trades?limit=${limit}&offset=${offset}`)
   logs = (limit = 200) => this.request<LogsResponse>(`/logs?limit=${limit}`)
+  performance = () => this.request<PairPerformance[]>('/performance')
   startBot = () => this.request<{ status: string }>('/start', { method: 'POST' })
   stopBot = () => this.request<{ status: string }>('/stop', { method: 'POST' })
   reloadConfig = () => this.request<{ status: string }>('/reload_config', { method: 'POST' })

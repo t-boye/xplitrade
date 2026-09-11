@@ -8,6 +8,7 @@ import { Trades } from './pages/Trades'
 import { Chart } from './pages/Chart'
 import { Logs } from './pages/Logs'
 import { Settings } from './pages/Settings'
+import { Analytics } from './pages/Analytics'
 
 function Guard({ children }: { children: React.ReactNode }) {
   const { isAuth } = useAuth()
@@ -25,6 +26,7 @@ export default function App() {
               <Route index element={<Navigate to="/dashboard" replace />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="trades" element={<Trades />} />
+              <Route path="analytics" element={<Analytics />} />
               <Route path="chart" element={<Chart />} />
               <Route path="logs" element={<Logs />} />
               <Route path="settings" element={<Settings />} />
