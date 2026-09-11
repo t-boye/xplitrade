@@ -27,10 +27,13 @@ export function Dashboard() {
   useEffect(() => {
     const load = async () => {
       try {
-        const [cfg, pft, bal, open] = await Promise.all([
+        const [cfg, pft, bal, open] = await Promise.allSettled([
           api.config(), api.profit(), api.balance(), api.status(),
         ])
-        setConfig(cfg); setProfit(pft); setBalance(bal); setOpenTrades(open)
+        if (cfg.status === 'fulfilled') setConfig(cfg.value)
+        if (pft.status === 'fulfilled') setProfit(pft.value)
+        if (bal.status === 'fulfilled') setBalance(bal.value)
+        if (open.status === 'fulfilled') setOpenTrades(open.value)
         setErr('')
       } catch (e: any) { setErr(e.message) }
       finally { setLoading(false) }
@@ -40,13 +43,10 @@ export function Dashboard() {
     return () => clearInterval(id)
   }, [])
 
-  if (loading) return (
+  if (loading && !config) return (
     <div className="flex items-center justify-center h-48">
       <span className="w-5 h-5 border-2 border-xp-accent border-t-transparent rounded-full animate-spin" />
     </div>
-  )
-  if (err) return (
-    <div className="text-sm text-xp-loss bg-xp-loss-bg rounded-lg px-4 py-3 border border-xp-loss/20">{err}</div>
   )
 
   const totalProfit = profit?.profit_all_coin ?? 0
