@@ -1508,7 +1508,7 @@ def test_pairlist_class(mocker, whitelist_conf, markets, pairlist):
         # BTT/BTC is inactive
         (["ETH/BTC", "TKN/BTC", "BTT/BTC"], "Market is not active"),
         # XLTCUSDT is not a valid pair
-        (["ETH/BTC", "TKN/BTC", "XLTCUSDT"], "is not tradable with Freqtrade"),
+        (["ETH/BTC", "TKN/BTC", "XLTCUSDT"], "is not tradable with Xplitrade"),
     ],
 )
 def test__whitelist_for_active_markets(

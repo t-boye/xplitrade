@@ -1,15 +1,15 @@
 ![xplitrade](assets/xplitrade_poweredby.svg)
 
-[![Xplitrade CI](https://github.com/freqtrade/xplitrade/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/freqtrade/xplitrade/actions/workflows/ci.yml)
+[![Xplitrade CI](https://github.com/Xplitrade/xplitrade/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/Xplitrade/xplitrade/actions/workflows/ci.yml)
 [![DOI](https://joss.theoj.org/papers/10.21105/joss.04864/status.svg)](https://doi.org/10.21105/joss.04864)
-[![codecov](https://codecov.io/gh/freqtrade/xplitrade/branch/develop/graph/badge.svg?token=AD5BG3ATKI)](https://codecov.io/gh/freqtrade/xplitrade)
-[![Documentation](https://readthedocs.org/projects/xplitrade/badge/)](https://www.freqtrade.io)
+[![codecov](https://codecov.io/gh/Xplitrade/xplitrade/branch/develop/graph/badge.svg?token=AD5BG3ATKI)](https://codecov.io/gh/Xplitrade/xplitrade)
+[![Documentation](https://readthedocs.org/projects/xplitrade/badge/)](https://www.Xplitrade.io)
 [![Discord Server](https://img.shields.io/badge/Xplitrade_Discord-4E4E4E?logo=discord)](https://discord.gg/p7nuUNVfP7)
 
 <!-- GitHub action buttons -->
-[:octicons-star-16: Star](https://github.com/freqtrade/xplitrade){ .md-button .md-button--sm }
-[:octicons-repo-forked-16: Fork](https://github.com/freqtrade/xplitrade/fork){ .md-button .md-button--sm }
-[:octicons-download-16: Download](https://github.com/freqtrade/xplitrade/archive/stable.zip){ .md-button .md-button--sm }
+[:octicons-star-16: Star](https://github.com/Xplitrade/xplitrade){ .md-button .md-button--sm }
+[:octicons-repo-forked-16: Fork](https://github.com/Xplitrade/xplitrade/fork){ .md-button .md-button--sm }
+[:octicons-download-16: Download](https://github.com/Xplitrade/xplitrade/archive/stable.zip){ .md-button .md-button--sm }
 
 ## Introduction
 
@@ -26,7 +26,7 @@ Xplitrade is a free and open source crypto trading bot written in Python. It is 
 
 ## Features
 
-- Develop your Strategy: Write your strategy in python, using [pandas](https://pandas.pydata.org/). Example strategies to inspire you are available in the [strategy repository](https://github.com/freqtrade/xplitrade-strategies).
+- Develop your Strategy: Write your strategy in python, using [pandas](https://pandas.pydata.org/). Example strategies to inspire you are available in the [strategy repository](https://github.com/Xplitrade/xplitrade-strategies).
 - Download market data: Download historical data of the exchange and the markets your may want to trade with.
 - Backtest: Test your strategy on downloaded historical data.
 - Optimize: Find the best parameters for your strategy using hyperoptimization which employs machine learning methods. You can optimize buy, sell, take profit (ROI), stop-loss and trailing stop-loss parameters for your strategy.

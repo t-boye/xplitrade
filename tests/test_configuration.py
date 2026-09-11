@@ -488,7 +488,7 @@ def test_setup_configuration_with_arguments(mocker, default_conf, caplog, tmp_pa
         "--datadir",
         "/foo/bar",
         "--userdir",
-        f"{tmp_path}/freqtrade",
+        f"{tmp_path}/Xplitrade",
         "--timeframe",
         "1m",
         "--enable-position-stacking",
@@ -1067,7 +1067,7 @@ def test_validate_edge_removal(default_conf):
     }
     with pytest.raises(
         ConfigurationError,
-        match=r"Edge is no longer supported and has been removed from Freqtrade with 2025\.6\.",
+        match=r"Edge is no longer supported and has been removed from Xplitrade with 2025\.6\.",
     ):
         validate_config_consistency(default_conf)
 

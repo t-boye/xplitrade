@@ -58,7 +58,7 @@ def test_start_new_config(mocker, caplog, exchange):
         "telegram_chat_id": "1144444",
         "api_server": False,
         "api_server_listen_addr": "127.0.0.1",
-        "api_server_username": "freqtrader",
+        "api_server_username": "Xplitrader",
         "api_server_password": "MoneyMachine",
     }
     mocker.patch(

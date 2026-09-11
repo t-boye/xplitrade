@@ -676,7 +676,7 @@ async def test_daily_handle(default_conf_usdt, update, ticker, fee, mocker, time
         get_fee=fee,
     )
 
-    telegram, _freqtradebot, msg_mock = get_telegram_testobject(mocker, default_conf_usdt)
+    telegram, _Xplitradebot, msg_mock = get_telegram_testobject(mocker, default_conf_usdt)
 
     # Move date to within day
     time_machine.move_to("2022-06-11 08:00:00+00:00")
@@ -983,7 +983,7 @@ async def test_telegram_profit_long_short_handle(
     """
 
     mocker.patch.multiple(EXMS, fetch_ticker=ticker_usdt, get_fee=fee)
-    telegram, _freqtradebot, msg_mock = get_telegram_testobject(mocker, default_conf_usdt)
+    telegram, _Xplitradebot, msg_mock = get_telegram_testobject(mocker, default_conf_usdt)
 
     # When there are no trades
     await telegram._profit_long(update=update, context=MagicMock())
@@ -1704,7 +1704,7 @@ async def test_telegram_performance_handle(default_conf_usdt, update, ticker, fe
         fetch_ticker=ticker,
         get_fee=fee,
     )
-    telegram, _freqtradebot, msg_mock = get_telegram_testobject(mocker, default_conf_usdt)
+    telegram, _Xplitradebot, msg_mock = get_telegram_testobject(mocker, default_conf_usdt)
 
     # Create some test data
     create_mock_trades_usdt(fee)
@@ -1882,7 +1882,7 @@ async def test_telegram_lock_handle(default_conf, update, ticker, fee, mocker) -
 
 
 async def test_whitelist_static(default_conf, update, mocker) -> None:
-    telegram, _freqtradebot, msg_mock = get_telegram_testobject(mocker, default_conf)
+    telegram, _Xplitradebot, msg_mock = get_telegram_testobject(mocker, default_conf)
 
     await telegram._whitelist(update=update, context=MagicMock())
     assert msg_mock.call_count == 1
@@ -2918,15 +2918,15 @@ async def test__send_msg_keyboard(default_conf, mocker, caplog) -> None:
 
 async def test_change_market_direction(default_conf, mocker, update) -> None:
     telegram, _, _msg_mock = get_telegram_testobject(mocker, default_conf)
-    assert telegram._rpc._freqtrade.strategy.market_direction == MarketDirection.NONE
+    assert telegram._rpc._Xplitrade.strategy.market_direction == MarketDirection.NONE
     context = MagicMock()
     context.args = ["long"]
     await telegram._changemarketdir(update, context)
-    assert telegram._rpc._freqtrade.strategy.market_direction == MarketDirection.LONG
+    assert telegram._rpc._Xplitrade.strategy.market_direction == MarketDirection.LONG
     context = MagicMock()
     context.args = ["invalid"]
     await telegram._changemarketdir(update, context)
-    assert telegram._rpc._freqtrade.strategy.market_direction == MarketDirection.LONG
+    assert telegram._rpc._Xplitrade.strategy.market_direction == MarketDirection.LONG
 
 
 async def test_telegram_list_custom_data(default_conf_usdt, update, ticker, fee, mocker) -> None:
@@ -2935,7 +2935,7 @@ async def test_telegram_list_custom_data(default_conf_usdt, update, ticker, fee,
         fetch_ticker=ticker,
         get_fee=fee,
     )
-    telegram, _freqtradebot, msg_mock = get_telegram_testobject(mocker, default_conf_usdt)
+    telegram, _Xplitradebot, msg_mock = get_telegram_testobject(mocker, default_conf_usdt)
 
     # Create some test data
     create_mock_trades_usdt(fee)

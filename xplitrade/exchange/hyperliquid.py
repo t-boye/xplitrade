@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 
 class Hyperliquid(Exchange):
     """Hyperliquid exchange class.
-    Contains adjustments needed for Freqtrade to work with this exchange.
+    Contains adjustments needed for Xplitrade to work with this exchange.
     """
 
     unified_account = False
@@ -165,7 +165,7 @@ class Hyperliquid(Exchange):
     def get_balances(self, params: dict | None = None) -> CcxtBalances:
         """Fetch balances from default DEX and HIP-3 DEXes needed by tradable pairs.
         This override is not absolutely necessary and is only there for correct used / total values
-        which are however not used by Freqtrade in futures mode at the moment.
+        which are however not used by Xplitrade in futures mode at the moment.
         """
         params = params or {}
         if self.unified_account:

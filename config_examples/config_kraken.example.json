@@ -1,5 +1,5 @@
 {
-    "$schema": "https://schema.freqtrade.io/schema.json",
+    "$schema": "https://schema.Xplitrade.io/schema.json",
     "max_open_trades": 5,
     "stake_currency": "EUR",
     "stake_amount": 10,
@@ -77,10 +77,10 @@
         "verbosity": "error",
         "jwt_secret_key": "somethingRandomSomethingRandom123",
         "CORS_origins": [],
-        "username": "freqtrader",
+        "username": "Xplitrader",
         "password": "SuperSecurePassword"
     },
-    "bot_name": "freqtrade",
+    "bot_name": "Xplitrade",
     "initial_state": "running",
     "force_entry_enable": false,
     "internals": {

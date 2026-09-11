@@ -53,7 +53,7 @@ from tests.conftest import (
 
 
 BASE_URI = "/api/v1"
-_TEST_USER = "FreqTrader"
+_TEST_USER = "Xplitrader"
 _TEST_PASS = "SuperSecurePassword1!"
 _TEST_WS_TOKEN = "secret_Ws_t0ken"
 _JWT_SECRET_KEY = "99980ff8fcf77f21ef610adb46b788c505b8483897bc26203b5591eefe0d15"
@@ -3648,7 +3648,7 @@ def test_api_ws_requests(botclient, caplog):
     assert response["type"] == "analyzed_df"
 
 
-def test_channel_reader_handles_freqtrade_exception(botclient):
+def test_channel_reader_handles_Xplitrade_exception(botclient):
     _ftbot, client = botclient
     ws_url = f"/api/v1/message/ws?token={_TEST_WS_TOKEN}"
 

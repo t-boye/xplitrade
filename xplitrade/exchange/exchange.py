@@ -631,7 +631,7 @@ class Exchange:
 
     def market_is_tradable(self, market: dict[str, Any]) -> bool:
         """
-        Check if the market symbol is tradable by Freqtrade.
+        Check if the market symbol is tradable by Xplitrade.
         Ensures that Configured mode aligns to
         """
         return (
@@ -843,7 +843,7 @@ class Exchange:
             and self._config["runmode"] != RunMode.UTIL_EXCHANGE
             and timeframe_to_minutes(timeframe) < 1
         ):
-            raise ConfigurationError("Timeframes < 1m are currently not supported by Freqtrade.")
+            raise ConfigurationError("Timeframes < 1m are currently not supported by Xplitrade.")
 
     def validate_ordertypes(self, order_types: dict) -> None:
         """

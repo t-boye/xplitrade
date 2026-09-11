@@ -11,7 +11,7 @@ If you haven't already, please familiarize yourself with:
 
 The bot includes a default strategy file.
 
-Also, several other strategies are available in the [strategy repository](https://github.com/freqtrade/xplitrade-strategies).
+Also, several other strategies are available in the [strategy repository](https://github.com/Xplitrade/xplitrade-strategies).
 
 You will however most likely have your own idea for a strategy.
 
@@ -85,7 +85,7 @@ Check the [configuration documentation](configuration.md) about how to set the b
 
 ## Diving in deeper
 
-**For the following section we will use the [user_data/strategies/sample_strategy.py](https://github.com/freqtrade/xplitrade/blob/develop/xplitrade/templates/sample_strategy.py)
+**For the following section we will use the [user_data/strategies/sample_strategy.py](https://github.com/Xplitrade/xplitrade/blob/develop/xplitrade/templates/sample_strategy.py)
 file as reference.**
 
 !!! Note "Strategies and Backtesting"
@@ -225,7 +225,7 @@ def populate_indicators(self, dataframe: DataFrame, metadata: dict) -> DataFrame
 ```
 
 !!! Note "Want more indicator examples?"
-    Look into the [user_data/strategies/sample_strategy.py](https://github.com/freqtrade/xplitrade/blob/develop/xplitrade/templates/sample_strategy.py).
+    Look into the [user_data/strategies/sample_strategy.py](https://github.com/Xplitrade/xplitrade/blob/develop/xplitrade/templates/sample_strategy.py).
     Then uncomment indicators you need.
 
 #### Indicator libraries
@@ -234,7 +234,7 @@ Out of the box, xplitrade installs the following technical libraries:
 
 - [ta-lib](https://ta-lib.github.io/ta-lib-python/) (Detailed documentation of included functions: [Ta-Lib](https://ta-lib.org/))
 - [pandas-ta](https://twopirllc.github.io/pandas-ta/)
-- [technical](https://technical.freqtrade.io)
+- [technical](https://technical.Xplitrade.io)
 
 Additional technical libraries can be installed as necessary, or custom indicators may be written / invented by the strategy author.
 
@@ -1289,7 +1289,7 @@ The following rules apply, and entry signals will be ignored if more than one of
 
 ## Further strategy ideas
 
-To get additional ideas for strategies, head over to the [strategy repository](https://github.com/freqtrade/xplitrade-strategies). Feel free to use them as examples, but results will depend on the current market situation, pairs used, etc. Therefore, these strategies should be considered only for learning purposes, not real world trading. Please backtest the strategy for your exchange/desired pairs first, then dry run to evaluate carefully, and use at your own risk.
+To get additional ideas for strategies, head over to the [strategy repository](https://github.com/Xplitrade/xplitrade-strategies). Feel free to use them as examples, but results will depend on the current market situation, pairs used, etc. Therefore, these strategies should be considered only for learning purposes, not real world trading. Please backtest the strategy for your exchange/desired pairs first, then dry run to evaluate carefully, and use at your own risk.
 
 Feel free to use any of them as inspiration for your own strategies. We're happy to accept Pull Requests containing new strategies to the repository.
 

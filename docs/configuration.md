@@ -27,12 +27,12 @@ Do not worry if you are not familiar with JSON format -- simply open the configu
 Set options in the Xplitrade configuration via environment variables.
 This takes priority over the corresponding value in configuration or strategy.
 
-Environment variables must be prefixed with  `FREQTRADE__` to be loaded to the xplitrade configuration.
+Environment variables must be prefixed with  `Xplitrade__` to be loaded to the xplitrade configuration.
 
-`__` serves as level separator, so the format used should correspond to `FREQTRADE__{section}__{key}`.
-As such - an environment variable defined as  `export FREQTRADE__STAKE_AMOUNT=200` would result in `{stake_amount: 200}`.
+`__` serves as level separator, so the format used should correspond to `Xplitrade__{section}__{key}`.
+As such - an environment variable defined as  `export Xplitrade__STAKE_AMOUNT=200` would result in `{stake_amount: 200}`.
 
-A more complex example might be `export FREQTRADE__EXCHANGE__KEY=<yourExchangeKey>` to keep your exchange key secret. This will move the value to the `exchange.key` section of the configuration.
+A more complex example might be `export Xplitrade__EXCHANGE__KEY=<yourExchangeKey>` to keep your exchange key secret. This will move the value to the `exchange.key` section of the configuration.
 Using this scheme, all configuration settings will also be available as environment variables.
 
 Please note that Environment variables will overwrite corresponding settings in your configuration, but command line Arguments will always win.
@@ -40,16 +40,16 @@ Please note that Environment variables will overwrite corresponding settings in 
 Common example:
 
 ``` bash
-FREQTRADE__TELEGRAM__CHAT_ID=<telegramchatid>
-FREQTRADE__TELEGRAM__TOKEN=<telegramToken>
-FREQTRADE__EXCHANGE__KEY=<yourExchangeKey>
-FREQTRADE__EXCHANGE__SECRET=<yourExchangeSecret>
+Xplitrade__TELEGRAM__CHAT_ID=<telegramchatid>
+Xplitrade__TELEGRAM__TOKEN=<telegramToken>
+Xplitrade__EXCHANGE__KEY=<yourExchangeKey>
+Xplitrade__EXCHANGE__SECRET=<yourExchangeSecret>
 ```
 
 Json lists are parsed as json - so you can use the following to set a list of pairs:
 
 ``` bash
-export FREQTRADE__EXCHANGE__PAIR_WHITELIST='["BTC/USDT", "ETH/USDT"]'
+export Xplitrade__EXCHANGE__PAIR_WHITELIST='["BTC/USDT", "ETH/USDT"]'
 ```
 
 !!! Note
@@ -135,12 +135,12 @@ If you are using an editor that supports JSON schema, you can use the schema pro
 
 ``` json
 {
-    "$schema": "https://schema.freqtrade.io/schema.json",
+    "$schema": "https://schema.Xplitrade.io/schema.json",
 }
 ```
 
 ??? Note "Develop version"
-    The develop schema is available as `https://schema.freqtrade.io/schema_dev.json` - though we recommend to stick to the stable version for the best experience.
+    The develop schema is available as `https://schema.Xplitrade.io/schema_dev.json` - though we recommend to stick to the stable version for the best experience.
 
 ## Configuration parameters
 

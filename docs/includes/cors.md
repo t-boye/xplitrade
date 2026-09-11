@@ -10,13 +10,13 @@ This whole section is only necessary in cross-origin cases (where you multiple b
 Users can allow access from different origin URL's to the bot API via the `CORS_origins` configuration setting.
 It consists of a list of allowed URL's that are allowed to consume resources from the bot's API.
 
-Assuming your application is deployed as `https://frequi.freqtrade.io/home/` - this would mean that the following configuration becomes necessary:
+Assuming your application is deployed as `https://frequi.Xplitrade.io/home/` - this would mean that the following configuration becomes necessary:
 
 ```jsonc
 {
     //...
     "jwt_secret_key": "somethingRandomSomethingRandom123",
-    "CORS_origins": ["https://frequi.freqtrade.io"],
+    "CORS_origins": ["https://frequi.Xplitrade.io"],
     //...
 }
 ```

@@ -1,6 +1,6 @@
 # FreqUI
 
-Xplitrade provides a builtin webserver, which can serve [FreqUI](https://github.com/freqtrade/frequi), the xplitrade frontend.
+Xplitrade provides a builtin webserver, which can serve [FreqUI](https://github.com/Xplitrade/frequi), the xplitrade frontend.
 
 By default, the UI is automatically installed as part of the installation (script, docker).
 freqUI can also be manually installed by using the `xplitrade install-ui` command.
@@ -9,7 +9,7 @@ This same command can also be used to update freqUI to new releases.
 Once the bot is started in trade / dry-run mode (with `xplitrade trade`) - the UI will be available under the configured API port (by default `http://127.0.0.1:8080`).
 
 ??? Note "Looking to contribute to freqUI?"
-    Developers should not use this method, but instead clone the corresponding use the method described in the [freqUI repository](https://github.com/freqtrade/frequi) to get the source-code of freqUI. A working installation of node will be required to build the frontend.
+    Developers should not use this method, but instead clone the corresponding use the method described in the [freqUI repository](https://github.com/Xplitrade/frequi) to get the source-code of freqUI. A working installation of node will be required to build the frontend.
 
 !!! tip "freqUI is not required to run xplitrade"
     freqUI is an optional component of xplitrade, and is not required to run the bot.

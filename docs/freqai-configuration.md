@@ -406,7 +406,7 @@ Here we create a `PyTorchMLPRegressor` class that implements the `fit` method. T
     
         return dataframe
     ```
-    To see a full example, you can refer to the [classifier test strategy class](https://github.com/freqtrade/xplitrade/blob/develop/tests/strategy/strats/freqai_test_classifier.py).
+    To see a full example, you can refer to the [classifier test strategy class](https://github.com/Xplitrade/xplitrade/blob/develop/tests/strategy/strats/freqai_test_classifier.py).
 
 
 #### Improving performance with `torch.compile()`

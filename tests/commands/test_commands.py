@@ -143,7 +143,7 @@ def test_list_exchanges(capsys):
 
     start_list_exchanges(get_args(args))
     captured = capsys.readouterr()
-    assert re.search(r".*Exchanges available for Freqtrade.*", captured.out)
+    assert re.search(r".*Exchanges available for Xplitrade.*", captured.out)
     assert re.search(r".*binance.*", captured.out)
     assert re.search(r".*bybit.*", captured.out)
 
@@ -194,7 +194,7 @@ def test_list_exchanges(capsys):
 
     start_list_exchanges(get_args(args))
     captured = capsys.readouterr()
-    assert re.search(r"Exchanges available for Freqtrade.*", captured.out)
+    assert re.search(r"Exchanges available for Xplitrade.*", captured.out)
     assert not re.search(r".*binance.*", captured.out)
     assert not re.search(r".*bingx.*", captured.out)
     assert re.search(r".*hyperliquid.*", captured.out)
@@ -208,7 +208,7 @@ def test_list_exchanges(capsys):
 
     start_list_exchanges(get_args(args))
     captured = capsys.readouterr()
-    assert re.search(r"Exchanges available for Freqtrade.*", captured.out)
+    assert re.search(r"Exchanges available for Xplitrade.*", captured.out)
     assert re.search(r".*binance.*", captured.out)
     assert re.search(r"\bkrakenfutures\b", captured.out)
     assert not re.search(r"\bmyokx\b", captured.out)
@@ -681,7 +681,7 @@ def test_create_datadir(mocker):
     csf = mocker.patch(
         "xplitrade.configuration.directory_operations.copy_sample_files", MagicMock()
     )
-    args = ["create-userdir", "--userdir", "/temp/freqtrade/test"]
+    args = ["create-userdir", "--userdir", "/temp/Xplitrade/test"]
     start_create_userdir(get_args(args))
 
     assert cud.call_count == 1

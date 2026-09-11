@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 class Htx(Exchange):
     """HTX exchange class.
-    Contains adjustments needed for Freqtrade to work with this exchange.
+    Contains adjustments needed for Xplitrade to work with this exchange.
     """
 
     _ft_has: FtHas = {

@@ -1,5 +1,5 @@
 """
-Main Freqtrade worker class.
+Main Xplitrade worker class.
 """
 
 import logging
@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 
 class Worker:
     """
-    Freqtradebot worker class
+    Xplitradebot worker class
     """
 
     def __init__(self, args: dict[str, Any], config: Config | None = None) -> None:

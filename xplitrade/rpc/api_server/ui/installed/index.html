@@ -255,8 +255,9 @@
         for (var i = 0; i < allAnchors.length; i++) {
           var a = allAnchors[i];
           if (a.querySelector('.xpli-logo')) { navPatched = true; return; }
+          // Vue compiled JS always renders the mask div in the logo anchor
           var hasMask = a.querySelector('[class*="mask-"]');
-          var hasFreqText = a.textContent.includes('Freqtrade');
+          var hasFreqText = a.textContent.includes('FreqtradeUI') || a.textContent.includes('Freqtrade');
           if (!hasMask && !hasFreqText) continue;
 
           var children = a.children;
@@ -275,35 +276,34 @@
       }
 
       function patchBranding() {
-        // Hide non-navbar robot mascot divs
+        // Hide non-navbar robot mascot divs (CSS mask divs outside nav links)
         var maskEls = document.querySelectorAll('[class*="mask-"]');
         for (var i = 0; i < maskEls.length; i++) {
           if (!maskEls[i].closest('a')) maskEls[i].classList.add('xpli-hide');
         }
 
-        // Hide links to freqtrade.io or with Freqtrade text
+        // Hide links pointing to freqtrade.io or labelled "Freqtrade Documentation"
         var allLinks = document.querySelectorAll('a[href]');
         for (var i = 0; i < allLinks.length; i++) {
           var link = allLinks[i];
           var href = link.getAttribute('href') || '';
           var txt = link.textContent || '';
-          if (href.includes('freqtrade') || txt.toLowerCase().includes('freqtrade documentation')) {
+          if (href.indexOf('freqtrade') !== -1 || txt.toLowerCase().indexOf('freqtrade documentation') !== -1) {
             var target = link.closest('p, li, div, span, td') || link;
             target.classList.add('xpli-hide');
           }
         }
 
-        // Replace visible Freqtrade text nodes
+        // Replace visible "Freqtrade" text nodes rendered by Vue's compiled JS
         var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
         var node;
         while ((node = walker.nextNode())) {
-          if (node.nodeValue && (node.nodeValue.includes('Freqtrade') || node.nodeValue.includes('freqtrade'))) {
+          if (node.nodeValue && node.nodeValue.indexOf('Freqtrade') !== -1) {
             var p = node.parentElement;
             if (p && p.classList.contains('xpli-hide')) continue;
             node.nodeValue = node.nodeValue
               .replace(/FreqtradeUI/g, 'XplitradeUI')
-              .replace(/Freqtrade/g, 'Xplitrade')
-              .replace(/freqtrade/g, 'xplitrade');
+              .replace(/Freqtrade/g, 'Xplitrade');
           }
         }
       }

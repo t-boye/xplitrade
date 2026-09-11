@@ -33,7 +33,7 @@ def _prepare_informative_pair(
         informative[date_merge_column] = informative[date_column]
     elif minutes < minutes_inf:
         # Subtract "small" timeframe so merging is not delayed by 1 small candle
-        # Detailed explanation in https://github.com/freqtrade/freqtrade/issues/4073
+        # Detailed explanation in https://github.com/Xplitrade/Xplitrade/issues/4073
         if not informative.empty:
             if timeframe_inf == "1M":
                 informative[date_merge_column] = (

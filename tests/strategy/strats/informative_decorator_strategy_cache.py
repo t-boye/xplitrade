@@ -12,7 +12,7 @@ class InformativeDecoratorCacheTest(IStrategy):
     Strategy used by tests xplitrade bot.
     Please do not modify this strategy, it's  intended for internal use only.
     Please look at the SampleStrategy in the user_data/strategy directory
-    or strategy repository https://github.com/freqtrade/freqtrade-strategies
+    or strategy repository https://github.com/Xplitrade/Xplitrade-strategies
     for samples and inspiration.
     """
 

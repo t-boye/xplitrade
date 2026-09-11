@@ -119,7 +119,7 @@ class RPC:
     if TYPE_CHECKING:
         from xplitrade.xplitradebot import XplitradeBot
 
-        _freqtrade: XplitradeBot
+        _Xplitrade: XplitradeBot
 
     def __init__(self, xplitrade) -> None:
         """
@@ -127,7 +127,7 @@ class RPC:
         :param xplitrade: Instance of a xplitrade bot
         :return: None
         """
-        self._freqtrade = xplitrade
+        self._Xplitrade = xplitrade
         self._config: Config = xplitrade.config
         if self._config.get("fiat_display_currency"):
             self._fiat_converter = CryptoToFiatConverter(self._config)
@@ -229,7 +229,7 @@ class RPC:
                 # calculate profit and send message to user
                 if trade.is_open:
                     try:
-                        current_rate: float = self._freqtrade.exchange.get_rate(
+                        current_rate: float = self._Xplitrade.exchange.get_rate(
                             trade.pair, side="exit", is_short=trade.is_short, refresh=False
                         )
                     except (ExchangeError, PricingError):
@@ -255,13 +255,13 @@ class RPC:
                 if not isnan(current_profit_abs) and self._fiat_converter:
                     current_profit_fiat = self._fiat_converter.convert_amount(
                         current_profit_abs,
-                        self._freqtrade.config["stake_currency"],
-                        self._freqtrade.config["fiat_display_currency"],
+                        self._Xplitrade.config["stake_currency"],
+                        self._Xplitrade.config["fiat_display_currency"],
                     )
                     total_profit_fiat = self._fiat_converter.convert_amount(
                         total_profit_abs,
-                        self._freqtrade.config["stake_currency"],
-                        self._freqtrade.config["fiat_display_currency"],
+                        self._Xplitrade.config["stake_currency"],
+                        self._Xplitrade.config["fiat_display_currency"],
                     )
 
                 # Calculate guaranteed profit (in case of trailing stop)
@@ -407,7 +407,7 @@ class RPC:
             raise RPCException("timescale must be an integer greater than 0")
 
         profit_units: dict[date, dict] = {}
-        daily_stake = self._freqtrade.wallets.get_total_stake_amount()
+        daily_stake = self._Xplitrade.wallets.get_total_stake_amount()
 
         for day in range(timescale):
             profitday = start_date - time_offset(day)
@@ -558,7 +558,7 @@ class RPC:
                     # Skip trades with no filled orders
                     continue
                 try:
-                    current_rate = self._freqtrade.exchange.get_rate(
+                    current_rate = self._Xplitrade.exchange.get_rate(
                         trade.pair, side="exit", is_short=trade.is_short, refresh=False
                     )
                 except (PricingError, ExchangeError):
@@ -653,7 +653,7 @@ class RPC:
         profit_all_ratio_mean = float(mean(profit_all_ratio) if profit_all_ratio else 0.0)
         # Doing the sum is not right - overall profit needs to be based on initial capital
         profit_all_ratio_sum = sum(profit_all_ratio) if profit_all_ratio else 0.0
-        starting_balance = self._freqtrade.wallets.get_starting_balance()
+        starting_balance = self._Xplitrade.wallets.get_starting_balance()
         profit_closed_ratio_fromstart = 0.0
         profit_all_ratio_fromstart = 0.0
         if starting_balance:
@@ -723,7 +723,7 @@ class RPC:
             max_date=last_date,
             starting_balance=starting_balance,
         )
-        current_balance = self._freqtrade.wallets.get_total_stake_amount()
+        current_balance = self._Xplitrade.wallets.get_total_stake_amount()
         days_passed = max(1, (last_date - first_date).days) if first_date and last_date else 1
         cagr = calculate_cagr(
             starting_balance=starting_balance,
@@ -816,7 +816,7 @@ class RPC:
         est_stake = 0.0
         est_bot_stake = 0.0
         is_futures = self._config.get("trading_mode", TradingMode.SPOT) == TradingMode.FUTURES
-        if coin == self._freqtrade.exchange.get_proxy_coin():
+        if coin == self._Xplitrade.exchange.get_proxy_coin():
             est_stake = balance.total
             if is_futures:
                 # in Futures, "total" includes the locked stake, and therefore all positions
@@ -824,7 +824,7 @@ class RPC:
             est_bot_stake = amount
         else:
             try:
-                rate: float | None = self._freqtrade.exchange.get_conversion_rate(
+                rate: float | None = self._Xplitrade.exchange.get_conversion_rate(
                     coin, stake_currency
                 )
                 if rate:
@@ -844,8 +844,8 @@ class RPC:
 
         open_trades: list[Trade] = Trade.get_open_trades()
         open_assets: dict[str, Trade] = {t.safe_base_currency: t for t in open_trades}
-        self._freqtrade.wallets.update(require_update=False)
-        starting_capital = self._freqtrade.wallets.get_starting_balance()
+        self._Xplitrade.wallets.update(require_update=False)
+        starting_capital = self._Xplitrade.wallets.get_starting_balance()
         starting_cap_fiat = (
             self._fiat_converter.convert_amount(
                 starting_capital, stake_currency, fiat_display_currency
@@ -855,20 +855,20 @@ class RPC:
         )
         coin: str
         balance: Wallet
-        for coin, balance in self._freqtrade.wallets.get_all_balances().items():
+        for coin, balance in self._Xplitrade.wallets.get_all_balances().items():
             if not balance.total and not balance.free:
                 continue
 
             trade = (
                 open_assets.get(coin, None)
-                if self._freqtrade.trading_mode != TradingMode.FUTURES
+                if self._Xplitrade.trading_mode != TradingMode.FUTURES
                 else None
             )
-            is_stake_currency = coin == self._freqtrade.exchange.get_proxy_coin()
+            is_stake_currency = coin == self._Xplitrade.exchange.get_proxy_coin()
             is_bot_managed = is_stake_currency or trade is not None
             trade_amount = trade.amount if trade else 0
             if is_stake_currency:
-                trade_amount = self._freqtrade.wallets.get_available_stake_amount()
+                trade_amount = self._Xplitrade.wallets.get_available_stake_amount()
 
             est_stake, est_stake_bot = self.__balance_get_est_stake(
                 coin, stake_currency, trade_amount, balance
@@ -896,12 +896,12 @@ class RPC:
             )
         symbol: str
         pos: PositionWallet
-        for symbol, pos in self._freqtrade.wallets.get_all_positions().items():
+        for symbol, pos in self._Xplitrade.wallets.get_all_positions().items():
             est_stake = pos.collateral
-            pos_base = self._freqtrade.exchange.get_pair_base_currency(symbol)
+            pos_base = self._Xplitrade.exchange.get_pair_base_currency(symbol)
             if pos.leverage and pos.position:
                 try:
-                    rate = self._freqtrade.exchange.get_conversion_rate(pos_base, stake_currency)
+                    rate = self._Xplitrade.exchange.get_conversion_rate(pos_base, stake_currency)
                     if rate:
                         # For a leveraged position, equity (what we want as est_stake) is:
                         #   equity = collateral + unlevered PnL
@@ -968,39 +968,39 @@ class RPC:
             "starting_capital_fiat_ratio": starting_cap_fiat_ratio,
             "starting_capital_fiat_pct": round(starting_cap_fiat_ratio * 100, 2),
             "trade_count": trade_count,
-            "note": "Simulated balances" if self._freqtrade.config["dry_run"] else "",
+            "note": "Simulated balances" if self._Xplitrade.config["dry_run"] else "",
         }
 
     def _rpc_start(self) -> dict[str, str]:
         """Handler for start"""
-        if self._freqtrade.state == State.RUNNING:
+        if self._Xplitrade.state == State.RUNNING:
             return {"status": "already running"}
 
-        self._freqtrade.state = State.RUNNING
+        self._Xplitrade.state = State.RUNNING
         return {"status": "starting trader ..."}
 
     def _rpc_stop(self) -> dict[str, str]:
         """Handler for stop"""
-        if self._freqtrade.state != State.STOPPED:
-            self._freqtrade.state = State.STOPPED
+        if self._Xplitrade.state != State.STOPPED:
+            self._Xplitrade.state = State.STOPPED
             return {"status": "stopping trader ..."}
 
         return {"status": "already stopped"}
 
     def _rpc_reload_config(self) -> dict[str, str]:
         """Handler for reload_config."""
-        self._freqtrade.state = State.RELOAD_CONFIG
+        self._Xplitrade.state = State.RELOAD_CONFIG
         return {"status": "Reloading config ..."}
 
     def _rpc_pause(self) -> dict[str, str]:
         """
         Handler to pause trading (stop entering new trades), but handle open trades gracefully.
         """
-        if self._freqtrade.state == State.RUNNING:
-            self._freqtrade.state = State.PAUSED
+        if self._Xplitrade.state == State.RUNNING:
+            self._Xplitrade.state = State.PAUSED
 
-        if self._freqtrade.state == State.STOPPED:
-            self._freqtrade.state = State.PAUSED
+        if self._Xplitrade.state == State.STOPPED:
+            self._Xplitrade.state = State.PAUSED
             return {
                 "status": (
                     "starting bot with trader in paused state, no entries will occur. "
@@ -1021,7 +1021,7 @@ class RPC:
         if not trade:
             raise RPCException(f"Could not find trade with id {trade_id}.")
 
-        self._freqtrade.handle_onexchange_order(trade)
+        self._Xplitrade.handle_onexchange_order(trade)
         return {"status": "Reloaded from orders from exchange"}
 
     def __exec_force_exit(
@@ -1035,10 +1035,10 @@ class RPC:
         trade_entry_cancelation_registry = []
         for oo in trade.open_orders:
             trade_entry_cancelation_res = {"order_id": oo.order_id, "cancel_state": False}
-            order = self._freqtrade.exchange.fetch_order(oo.order_id, trade.pair)
+            order = self._Xplitrade.exchange.fetch_order(oo.order_id, trade.pair)
 
             if order["side"] == trade.entry_side:
-                fully_canceled = self._freqtrade.handle_cancel_enter(
+                fully_canceled = self._Xplitrade.handle_cancel_enter(
                     trade, order, oo, CANCEL_REASON["FORCE_EXIT"]
                 )
                 trade_entry_cancelation_res["cancel_state"] = fully_canceled
@@ -1046,7 +1046,7 @@ class RPC:
 
             if order["side"] == trade.exit_side:
                 # Cancel order - so it is placed anew with a fresh price.
-                self._freqtrade.handle_cancel_exit(trade, order, oo, CANCEL_REASON["FORCE_EXIT"])
+                self._Xplitrade.handle_cancel_exit(trade, order, oo, CANCEL_REASON["FORCE_EXIT"])
 
         if all(tocr["cancel_state"] is False for tocr in trade_entry_cancelation_registry):
             if trade.has_open_orders:
@@ -1055,20 +1055,20 @@ class RPC:
             # Get current rate and execute sell
 
             current_rate = (
-                self._freqtrade.exchange.get_rate(
+                self._Xplitrade.exchange.get_rate(
                     trade.pair, side="exit", is_short=trade.is_short, refresh=True
                 )
                 if ordertype == "market" or price is None
                 else price
             )
             exit_check = ExitCheckTuple(exit_type=ExitType.FORCE_EXIT)
-            order_type = ordertype or self._freqtrade.strategy.order_types.get(
-                "force_exit", self._freqtrade.strategy.order_types["exit"]
+            order_type = ordertype or self._Xplitrade.strategy.order_types.get(
+                "force_exit", self._Xplitrade.strategy.order_types["exit"]
             )
             sub_amount: float | None = None
             if amount and amount < trade.amount:
                 # Partial exit ...
-                min_exit_stake = self._freqtrade.exchange.get_min_pair_stake_amount(
+                min_exit_stake = self._Xplitrade.exchange.get_min_pair_stake_amount(
                     trade.pair, current_rate, trade.stop_loss_pct or 0.0
                 )
                 remaining = (trade.amount - amount) * current_rate
@@ -1076,7 +1076,7 @@ class RPC:
                     raise RPCException(f"Remaining amount of {remaining} would be too small.")
                 sub_amount = amount
 
-            self._freqtrade.execute_trade_exit(
+            self._Xplitrade.execute_trade_exit(
                 trade,
                 current_rate,
                 exit_check,
@@ -1101,16 +1101,16 @@ class RPC:
         exits the given trade. Uses current price if price is None.
         """
 
-        if self._freqtrade.state == State.STOPPED:
+        if self._Xplitrade.state == State.STOPPED:
             raise RPCException("trader is not running")
 
-        with self._freqtrade._exit_lock:
+        with self._Xplitrade._exit_lock:
             if trade_id == "all":
                 # Execute exit for all open orders
                 for trade in Trade.get_open_trades():
                     self.__exec_force_exit(trade, ordertype)
                 Trade.commit()
-                self._freqtrade.wallets.update()
+                self._Xplitrade.wallets.update()
                 return {"result": "Created exit orders for all open trades."}
 
             # Query for trade
@@ -1130,26 +1130,26 @@ class RPC:
 
             result = self.__exec_force_exit(trade, ordertype, amount, price)
             Trade.commit()
-            self._freqtrade.wallets.update()
+            self._Xplitrade.wallets.update()
             if not result:
                 raise RPCException("Failed to exit trade.")
             return {"result": f"Created exit order for trade {trade_id}."}
 
     def _force_entry_validations(self, pair: str, order_side: SignalDirection):
-        if not self._freqtrade.config.get("force_entry_enable", False):
+        if not self._Xplitrade.config.get("force_entry_enable", False):
             raise RPCException("Force_entry not enabled.")
 
-        if self._freqtrade.state != State.RUNNING:
+        if self._Xplitrade.state != State.RUNNING:
             raise RPCException("trader is not running")
 
-        if order_side == SignalDirection.SHORT and self._freqtrade.trading_mode == TradingMode.SPOT:
+        if order_side == SignalDirection.SHORT and self._Xplitrade.trading_mode == TradingMode.SPOT:
             raise RPCException("Can't go short on Spot markets.")
 
-        if pair not in self._freqtrade.exchange.get_markets(tradable_only=True):
+        if pair not in self._Xplitrade.exchange.get_markets(tradable_only=True):
             raise RPCException("Symbol does not exist or market is not active.")
         # Check if pair quote currency equals to the stake currency.
-        stake_currency = self._freqtrade.config.get("stake_currency")
-        if not self._freqtrade.exchange.get_pair_quote_currency(pair) == stake_currency:
+        stake_currency = self._Xplitrade.config.get("stake_currency")
+        if not self._Xplitrade.exchange.get_pair_quote_currency(pair) == stake_currency:
             raise RPCException(
                 f"Wrong pair selected. Only pairs with stake-currency {stake_currency} allowed."
             )
@@ -1180,7 +1180,7 @@ class RPC:
         is_short = order_side == SignalDirection.SHORT
         if trade:
             is_short = trade.is_short
-            if not self._freqtrade.strategy.position_adjustment_enable:
+            if not self._Xplitrade.strategy.position_adjustment_enable:
                 raise RPCException(f"position for {pair} already open - id: {trade.id}")
             if trade.has_open_orders:
                 raise RPCException(
@@ -1193,17 +1193,17 @@ class RPC:
 
         if not stake_amount:
             # gen stake amount
-            stake_amount = self._freqtrade.wallets.get_trade_stake_amount(
+            stake_amount = self._Xplitrade.wallets.get_trade_stake_amount(
                 pair, self._config["max_open_trades"]
             )
 
         # execute buy
         if not order_type:
-            order_type = self._freqtrade.strategy.order_types.get(
-                "force_entry", self._freqtrade.strategy.order_types["entry"]
+            order_type = self._Xplitrade.strategy.order_types.get(
+                "force_entry", self._Xplitrade.strategy.order_types["entry"]
             )
-        with self._freqtrade._exit_lock:
-            if self._freqtrade.execute_entry(
+        with self._Xplitrade._exit_lock:
+            if self._Xplitrade.execute_entry(
                 pair,
                 stake_amount,
                 price,
@@ -1221,9 +1221,9 @@ class RPC:
                 raise RPCException(f"Failed to enter position for {pair}.")
 
     def _rpc_cancel_open_order(self, trade_id: int):
-        if self._freqtrade.state == State.STOPPED:
+        if self._Xplitrade.state == State.STOPPED:
             raise RPCException("trader is not running")
-        with self._freqtrade._exit_lock:
+        with self._Xplitrade._exit_lock:
             # Query for trade
             trade = Trade.get_trades(
                 trade_filter=[
@@ -1240,11 +1240,11 @@ class RPC:
 
             for open_order in trade.open_orders:
                 try:
-                    order = self._freqtrade.exchange.fetch_order(open_order.order_id, trade.pair)
+                    order = self._Xplitrade.exchange.fetch_order(open_order.order_id, trade.pair)
                 except ExchangeError as e:
                     logger.info(f"Cannot query order for {trade} due to {e}.", exc_info=True)
                     raise RPCException("Order not found.")
-                self._freqtrade.handle_cancel_order(
+                self._Xplitrade.handle_cancel_order(
                     order, open_order, trade, CANCEL_REASON["USER_CANCEL"]
                 )
             Trade.commit()
@@ -1254,7 +1254,7 @@ class RPC:
         Handler for delete <id>.
         Delete the given trade and close eventually existing open orders.
         """
-        with self._freqtrade._exit_lock:
+        with self._Xplitrade._exit_lock:
             c_count = 0
             trade = Trade.get_trades(trade_filter=[Trade.id == trade_id]).first()
             if not trade:
@@ -1264,25 +1264,25 @@ class RPC:
             # Try cancelling regular order if that exists
             for open_order in trade.open_orders:
                 try:
-                    self._freqtrade.exchange.cancel_order(open_order.order_id, trade.pair)
+                    self._Xplitrade.exchange.cancel_order(open_order.order_id, trade.pair)
                     c_count += 1
                 except ExchangeError:
                     pass
 
             # cancel stoploss on exchange orders ...
             if (
-                self._freqtrade.strategy.order_types.get("stoploss_on_exchange")
+                self._Xplitrade.strategy.order_types.get("stoploss_on_exchange")
                 and trade.has_open_sl_orders
             ):
                 for oslo in trade.open_sl_orders:
                     try:
-                        self._freqtrade.exchange.cancel_stoploss_order(oslo.order_id, trade.pair)
+                        self._Xplitrade.exchange.cancel_stoploss_order(oslo.order_id, trade.pair)
                         c_count += 1
                     except ExchangeError:
                         pass
             trade_pair = trade.pair
             trade.delete()
-            self._freqtrade.wallets.update()
+            self._Xplitrade.wallets.update()
             return {
                 "result": "success",
                 "trade_id": trade_id,
@@ -1394,15 +1394,15 @@ class RPC:
 
     def _rpc_count(self) -> dict[str, float]:
         """Returns the number of trades running"""
-        if self._freqtrade.state == State.STOPPED:
+        if self._Xplitrade.state == State.STOPPED:
             raise RPCException("trader is not running")
 
         trades = Trade.get_open_trades()
         return {
             "current": len(trades),
             "max": (
-                int(self._freqtrade.config["max_open_trades"])
-                if self._freqtrade.config["max_open_trades"] != float("inf")
+                int(self._Xplitrade.config["max_open_trades"])
+                if self._Xplitrade.config["max_open_trades"] != float("inf")
                 else -1
             ),
             "total_stake": sum((trade.open_rate * trade.amount) for trade in trades),
@@ -1445,9 +1445,9 @@ class RPC:
     def _rpc_whitelist(self) -> dict:
         """Returns the currently active whitelist"""
         res = {
-            "method": self._freqtrade.pairlists.name_list,
-            "length": len(self._freqtrade.active_pair_whitelist),
-            "whitelist": self._freqtrade.active_pair_whitelist,
+            "method": self._Xplitrade.pairlists.name_list,
+            "length": len(self._Xplitrade.active_pair_whitelist),
+            "whitelist": self._Xplitrade.active_pair_whitelist,
         }
         return res
 
@@ -1455,8 +1455,8 @@ class RPC:
         """Removes pairs from currently active blacklist"""
         errors = {}
         for pair in delete:
-            if pair in self._freqtrade.pairlists.blacklist:
-                self._freqtrade.pairlists.blacklist.remove(pair)
+            if pair in self._Xplitrade.pairlists.blacklist:
+                self._Xplitrade.pairlists.blacklist.remove(pair)
             else:
                 errors[pair] = {"error_msg": f"Pair {pair} is not in the current blacklist."}
         resp = self._rpc_blacklist()
@@ -1468,10 +1468,10 @@ class RPC:
         errors = {}
         if add:
             for pair in add:
-                if pair not in self._freqtrade.pairlists.blacklist:
+                if pair not in self._Xplitrade.pairlists.blacklist:
                     try:
-                        expand_pairlist([pair], list(self._freqtrade.exchange.get_markets().keys()))
-                        self._freqtrade.pairlists.blacklist.append(pair)
+                        expand_pairlist([pair], list(self._Xplitrade.exchange.get_markets().keys()))
+                        self._Xplitrade.pairlists.blacklist.append(pair)
 
                     except ValueError:
                         errors[pair] = {"error_msg": f"Pair {pair} is not a valid wildcard."}
@@ -1479,10 +1479,10 @@ class RPC:
                     errors[pair] = {"error_msg": f"Pair {pair} already in pairlist."}
 
         res = {
-            "method": self._freqtrade.pairlists.name_list,
-            "length": len(self._freqtrade.pairlists.blacklist),
-            "blacklist": self._freqtrade.pairlists.blacklist,
-            "blacklist_expanded": self._freqtrade.pairlists.expanded_blacklist,
+            "method": self._Xplitrade.pairlists.name_list,
+            "length": len(self._Xplitrade.pairlists.blacklist),
+            "blacklist": self._Xplitrade.pairlists.blacklist,
+            "blacklist_expanded": self._Xplitrade.pairlists.expanded_blacklist,
             "errors": errors,
         }
         return res
@@ -1597,10 +1597,10 @@ class RPC:
         """Analyzed dataframe in Dict form"""
 
         _data, last_analyzed = self.__rpc_analysed_dataframe_raw(pair, timeframe, limit)
-        annotations = self._freqtrade.strategy.ft_plot_annotations(pair=pair, dataframe=_data)
+        annotations = self._Xplitrade.strategy.ft_plot_annotations(pair=pair, dataframe=_data)
 
         return RPC._convert_dataframe_to_dict(
-            self._freqtrade.config["strategy"],
+            self._Xplitrade.config["strategy"],
             pair,
             timeframe,
             _data,
@@ -1619,7 +1619,7 @@ class RPC:
         :param timeframe: The timeframe of data to get
         :param limit: The amount of candles in the dataframe
         """
-        _data, last_analyzed = self._freqtrade.dataprovider.get_analyzed_dataframe(pair, timeframe)
+        _data, last_analyzed = self._Xplitrade.dataprovider.get_analyzed_dataframe(pair, timeframe)
         _data = _data.copy()
 
         if limit:
@@ -1640,8 +1640,8 @@ class RPC:
                       If a list of string date times, only returns those candles
         :returns: A generator of dictionaries with the key, dataframe, and last analyzed timestamp
         """
-        timeframe = self._freqtrade.config["timeframe"]
-        candle_type = self._freqtrade.config.get("candle_type_def", CandleType.SPOT)
+        timeframe = self._Xplitrade.config["timeframe"]
+        candle_type = self._Xplitrade.config.get("candle_type_def", CandleType.SPOT)
 
         for pair in pairlist:
             dataframe, last_analyzed = self.__rpc_analysed_dataframe_raw(pair, timeframe, limit)
@@ -1650,13 +1650,13 @@ class RPC:
 
     def _ws_request_analyzed_df(self, limit: int | None = None, pair: str | None = None):
         """Historical Analyzed Dataframes for WebSocket"""
-        pairlist = [pair] if pair else self._freqtrade.active_pair_whitelist
+        pairlist = [pair] if pair else self._Xplitrade.active_pair_whitelist
 
         return self._ws_all_analysed_dataframes(pairlist, limit)
 
     def _ws_request_whitelist(self):
         """Whitelist data for WebSocket"""
-        return self._freqtrade.active_pair_whitelist
+        return self._Xplitrade.active_pair_whitelist
 
     @staticmethod
     def _rpc_analysed_history_full(
@@ -1749,11 +1749,11 @@ class RPC:
 
     def _rpc_plot_config(self) -> dict[str, Any]:
         if (
-            self._freqtrade.strategy.plot_config
-            and "subplots" not in self._freqtrade.strategy.plot_config
+            self._Xplitrade.strategy.plot_config
+            and "subplots" not in self._Xplitrade.strategy.plot_config
         ):
-            self._freqtrade.strategy.plot_config["subplots"] = {}
-        return self._freqtrade.strategy.plot_config
+            self._Xplitrade.strategy.plot_config["subplots"] = {}
+        return self._Xplitrade.strategy.plot_config
 
     @staticmethod
     def _rpc_plot_config_with_strategy(config: Config) -> dict[str, Any]:
@@ -1791,7 +1791,7 @@ class RPC:
         }
 
     def health(self) -> dict[str, str | int | None]:
-        last_p = self._freqtrade.last_process
+        last_p = self._Xplitrade.last_process
         res: dict[str, str | int | None] = {
             "last_process": None,
             "last_process_loc": None,
@@ -1833,7 +1833,7 @@ class RPC:
         return res
 
     def _update_market_direction(self, direction: MarketDirection) -> None:
-        self._freqtrade.strategy.market_direction = direction
+        self._Xplitrade.strategy.market_direction = direction
 
     def _get_market_direction(self) -> MarketDirection:
-        return self._freqtrade.strategy.market_direction
+        return self._Xplitrade.strategy.market_direction

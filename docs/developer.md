@@ -2,11 +2,11 @@
 
 This page is intended for developers of Xplitrade, people who want to contribute to the Xplitrade codebase or documentation, or people who want to understand the source code of the application they're running.
 
-All contributions, bug reports, bug fixes, documentation improvements, enhancements and ideas are welcome. We [track issues](https://github.com/freqtrade/xplitrade/issues) on [GitHub](https://github.com) and also have a dev channel on [discord](https://discord.gg/p7nuUNVfP7) where you can ask questions.
+All contributions, bug reports, bug fixes, documentation improvements, enhancements and ideas are welcome. We [track issues](https://github.com/Xplitrade/xplitrade/issues) on [GitHub](https://github.com) and also have a dev channel on [discord](https://discord.gg/p7nuUNVfP7) where you can ask questions.
 
 ## Documentation
 
-Documentation is available at [https://freqtrade.io](https://www.freqtrade.io/) and needs to be provided with every new feature PR.
+Documentation is available at [https://Xplitrade.io](https://www.Xplitrade.io/) and needs to be provided with every new feature PR.
 
 Special fields for the documentation (like Note boxes, ...) can be found [here](https://squidfunk.github.io/mkdocs-material/reference/admonitions/).
 
@@ -38,7 +38,7 @@ This reduces unnecessary CI failures, reduces maintenance burden, and improves c
 
 You can run the checks manually when necessary with `pre-commit run -a`.  
 
-Before opening a pull request, please also familiarize yourself with our [Contributing Guidelines](https://github.com/freqtrade/xplitrade/blob/develop/CONTRIBUTING.md).
+Before opening a pull request, please also familiarize yourself with our [Contributing Guidelines](https://github.com/Xplitrade/xplitrade/blob/develop/CONTRIBUTING.md).
 
 ### Devcontainer setup
 
@@ -171,7 +171,7 @@ Hopefully you also want to contribute this back upstream.
 
 Whatever your motivations are - This should get you off the ground in trying to develop a new Pairlist Handler.
 
-First of all, have a look at the [VolumePairList](https://github.com/freqtrade/xplitrade/blob/develop/xplitrade/plugins/pairlist/VolumePairList.py) Handler, and best copy this file with a name of your new Pairlist Handler.
+First of all, have a look at the [VolumePairList](https://github.com/Xplitrade/xplitrade/blob/develop/xplitrade/plugins/pairlist/VolumePairList.py) Handler, and best copy this file with a name of your new Pairlist Handler.
 
 This is a simple Handler, which however serves as a good example on how to start developing.
 
@@ -439,7 +439,7 @@ This documents some decisions taken for the CI Pipeline.
 * CI runs on all OS variants, Linux (ubuntu), macOS and Windows.
 * Docker images are build for the branches `stable` and `develop`, and are built as multiarch builds, supporting multiple platforms via the same tag.
 * Docker images containing Plot dependencies are also available as `stable_plot` and `develop_plot`.
-* Docker images contain a file, `/freqtrade/xplitrade_commit` containing the commit this image is based of.
+* Docker images contain a file, `/Xplitrade/xplitrade_commit` containing the commit this image is based of.
 * Full docker image rebuilds are run once a week via schedule.
 * Deployments run on ubuntu.
 * All tests must pass for a PR to be merged to `stable` or `develop`.

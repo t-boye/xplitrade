@@ -180,7 +180,7 @@ The absolute value of the return value is used (the sign is ignored), so returni
 Returning `None` will be interpreted as "no desire to change", and is the only safe way to return when you'd like to not modify the stoploss.
 `NaN` and `inf` values are considered invalid and will be ignored (identical to `None`).
 
-Stoploss on exchange works similar to `trailing_stop`, and the stoploss on exchange is updated as configured in `stoploss_on_exchange_interval` ([More details about stoploss on exchange](stoploss.md#stop-loss-on-exchangefreqtrade)).
+Stoploss on exchange works similar to `trailing_stop`, and the stoploss on exchange is updated as configured in `stoploss_on_exchange_interval` ([More details about stoploss on exchange](stoploss.md#stop-loss-on-exchangeXplitrade)).
 
 If you're on futures markets, please take note of the [stoploss and leverage](stoploss.md#stoploss-and-leverage) section, as the stoploss value returned from `custom_stoploss` is the risk for this trade - not the relative price movement.
 
@@ -225,7 +225,7 @@ class AwesomeStrategy(IStrategy):
         e.g. returning -0.05 would create a stoploss 5% below current_rate.
         The custom stoploss can never be below self.stoploss, which serves as a hard maximum loss.
 
-        For full documentation please go to https://www.freqtrade.io/en/stable/strategy-advanced/
+        For full documentation please go to https://www.Xplitrade.io/en/stable/strategy-advanced/
 
         When not implemented by a strategy, returns the initial stoploss value.
         Only called when use_custom_stoploss is set to True.
@@ -808,7 +808,7 @@ class AwesomeStrategy(IStrategy):
         Timing for this function is critical, so avoid doing heavy computations or
         network requests in this method.
 
-        For full documentation please go to https://www.freqtrade.io/en/stable/strategy-advanced/
+        For full documentation please go to https://www.Xplitrade.io/en/stable/strategy-advanced/
 
         When not implemented by a strategy, returns True (always confirming).
 
@@ -856,7 +856,7 @@ class AwesomeStrategy(IStrategy):
         Timing for this function is critical, so avoid doing heavy computations or
         network requests in this method.
 
-        For full documentation please go to https://www.freqtrade.io/en/stable/strategy-advanced/
+        For full documentation please go to https://www.Xplitrade.io/en/stable/strategy-advanced/
 
         When not implemented by a strategy, returns True (always confirming).
 
@@ -994,7 +994,7 @@ class DigDeeperStrategy(IStrategy):
         This means extra entry or exit orders with additional fees.
         Only called when `position_adjustment_enable` is set to True.
 
-        For full documentation please go to https://www.freqtrade.io/en/stable/strategy-advanced/
+        For full documentation please go to https://www.Xplitrade.io/en/stable/strategy-advanced/
 
         When not implemented by a strategy, returns None
 
@@ -1121,7 +1121,7 @@ class AwesomeStrategy(IStrategy):
         This only executes when a order was already placed, still open (unfilled fully or partially)
         and not timed out on subsequent candles after entry trigger.
 
-        For full documentation please go to https://www.freqtrade.io/en/stable/strategy-callbacks/
+        For full documentation please go to https://www.Xplitrade.io/en/stable/strategy-callbacks/
 
         When not implemented by a strategy, returns current_order_rate as default.
         If current_order_rate is returned then the existing order is maintained.

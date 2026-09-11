@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 class Idex(Exchange):
     """
-    Idex exchange class. Contains adjustments needed for Freqtrade to work
+    Idex exchange class. Contains adjustments needed for Xplitrade to work
     with this exchange.
     """
 

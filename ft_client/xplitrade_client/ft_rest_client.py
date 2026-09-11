@@ -1,5 +1,5 @@
 """
-A Rest Client for Freqtrade bot
+A Rest Client for Xplitrade bot
 
 Should not import anything from xplitrade,
 so it can be used as a standalone script, and can be installed independently.

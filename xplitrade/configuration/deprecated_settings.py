@@ -26,7 +26,7 @@ def check_conflicting_settings(
         raise OperationalException(
             f"Conflicting settings `{new_name}` and `{old_name}` "
             "(DEPRECATED) detected in the configuration file. "
-            "This deprecated setting will be removed in the next versions of Freqtrade. "
+            "This deprecated setting will be removed in the next versions of Xplitrade. "
             f"Please delete it from your configuration and use the `{new_name}` "
             "setting instead."
         )
@@ -67,7 +67,7 @@ def process_deprecated_setting(
         logger.warning(
             "DEPRECATED: "
             f"The `{section_1}` setting is deprecated and "
-            "will be removed in the next versions of Freqtrade. "
+            "will be removed in the next versions of Xplitrade. "
             f"Please use the `{section_2}` setting in your configuration instead."
         )
 

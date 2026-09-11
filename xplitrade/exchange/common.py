@@ -136,7 +136,7 @@ def retrier_async(f):
                 if isinstance(ex, DDosProtection):
                     if kucoin and "429000" in str(ex):
                         # Temporary fix for 429000 error on kucoin
-                        # see https://github.com/freqtrade/freqtrade/issues/5700 for details.
+                        # see https://github.com/Xplitrade/Xplitrade/issues/5700 for details.
                         _get_logging_mixin().log_once(
                             f"Kucoin 429 error, avoid triggering DDosProtection backoff delay. "
                             f"{count} tries left before giving up",

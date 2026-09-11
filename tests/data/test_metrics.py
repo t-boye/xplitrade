@@ -600,7 +600,7 @@ def test_calculate_max_drawdown2():
 )
 def test_calculate_max_drawdown_abs(profits, relative, highd, lowdays, result, result_rel):
     """
-    Test case from issue https://github.com/freqtrade/freqtrade/issues/6655
+    Test case from issue https://github.com/Xplitrade/Xplitrade/issues/6655
     [1000, 500,  1000, 11000, 10000] # absolute results
     [1000, 50%,  0%,   0%,       ~9%]   # Relative drawdowns
     """

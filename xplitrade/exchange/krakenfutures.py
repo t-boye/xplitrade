@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 class Krakenfutures(Exchange):
     """Kraken Futures exchange class.
 
-    Contains adjustments needed for Freqtrade to work with this exchange.
+    Contains adjustments needed for Xplitrade to work with this exchange.
 
     Key differences from spot Kraken:
     - Stop orders use triggerPrice/triggerSignal instead of stopPrice
@@ -183,7 +183,7 @@ class Krakenfutures(Exchange):
 
         Kraken Futures' /fills endpoint does not include fee amounts — only
         fillType (maker/taker). This enriches each trade with a calculated fee
-        using the market's fee schedule so Freqtrade's fee detection works.
+        using the market's fee schedule so Xplitrade's fee detection works.
         """
         trades = super().get_trades_for_order(order_id, pair, since, params)
         for trade in trades:

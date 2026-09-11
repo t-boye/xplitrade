@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 class Kraken(Exchange):
     """Kraken exchange class.
-    Contains adjustments needed for Freqtrade to work with this exchange.
+    Contains adjustments needed for Xplitrade to work with this exchange.
     """
 
     _params: dict = {"trading_agreement": "agree"}
@@ -42,7 +42,7 @@ class Kraken(Exchange):
 
     def market_is_tradable(self, market: dict[str, Any]) -> bool:
         """
-        Check if the market symbol is tradable by Freqtrade.
+        Check if the market symbol is tradable by Xplitrade.
         Default checks + check if pair is darkpool pair.
         """
         parent_check = super().market_is_tradable(market)

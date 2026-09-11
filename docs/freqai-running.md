@@ -169,7 +169,7 @@ This specific hyperopt would help you understand the appropriate `DI_values` for
 ## Using Tensorboard
 
 !!! note "Availability"
-    FreqAI includes tensorboard for a variety of models, including XGBoost, all PyTorch models, Reinforcement Learning, and Catboost. If you would like to see Tensorboard integrated into another model type, please open an issue on the [Xplitrade GitHub](https://github.com/freqtrade/xplitrade/issues)
+    FreqAI includes tensorboard for a variety of models, including XGBoost, all PyTorch models, Reinforcement Learning, and Catboost. If you would like to see Tensorboard integrated into another model type, please open an issue on the [Xplitrade GitHub](https://github.com/Xplitrade/xplitrade/issues)
 
 !!! danger "Requirements"
     Tensorboard logging requires the FreqAI torch installation/docker image.

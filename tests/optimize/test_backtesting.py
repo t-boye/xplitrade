@@ -643,7 +643,7 @@ def test_backtest__enter_trade_futures(default_conf_usdt, fee, mocker) -> None:
     #   = ((wb + cum_b) - (side_1 * position * ep1)) / ((position * mmr_b) - (side_1 * position))
     #   = ((300 + 0.01) - (1 * 15000 * 0.1)) / ((15000 * 0.01) - (1 * 15000))
     #   = 0.0008080740740740741
-    # freqtrade_liquidation_price = liq + (abs(open_rate - liq) * liq_buffer * side_1)
+    # Xplitrade_liquidation_price = liq + (abs(open_rate - liq) * liq_buffer * side_1)
     #   = 0.08080740740740741 + ((0.1 - 0.08080740740740741) * 0.05 * 1)
     #   = 0.08176703703703704
 
@@ -655,7 +655,7 @@ def test_backtest__enter_trade_futures(default_conf_usdt, fee, mocker) -> None:
     #   = ((wb + cum_b) - (side_1 * position * ep1)) / ((position * mmr_b) - (side_1 * position))
     #   = ((300 + 0.01) - ((-1) * 15000 * 0.1)) / ((15000 * 0.01) - ((-1) * 15000))
     #   = 0.0011881254125412541
-    # freqtrade_liquidation_price = liq + (abs(open_rate - liq) * liq_buffer * side_1)
+    # Xplitrade_liquidation_price = liq + (abs(open_rate - liq) * liq_buffer * side_1)
     #   = 0.11881254125412541 + (abs(0.1 - 0.11881254125412541) * 0.05 * -1)
     #   = 0.11787191419141915
 

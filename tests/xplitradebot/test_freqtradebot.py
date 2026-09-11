@@ -77,7 +77,7 @@ def patch_RPCManager(mocker) -> MagicMock:
 # Unit tests
 
 
-def test_freqtradebot_state(mocker, default_conf_usdt, markets) -> None:
+def test_Xplitradebot_state(mocker, default_conf_usdt, markets) -> None:
     mocker.patch(f"{EXMS}.markets", PropertyMock(return_value=markets))
     xplitrade = get_patched_xplitradebot(mocker, default_conf_usdt)
     assert xplitrade.state is State.RUNNING

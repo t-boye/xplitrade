@@ -15,8 +15,8 @@ def extract_config_json_schema():
         import sys
 
         script_dir = Path(__file__).parent
-        freqtrade_dir = script_dir.parent
-        sys.path.insert(0, str(freqtrade_dir))
+        Xplitrade_dir = script_dir.parent
+        sys.path.insert(0, str(Xplitrade_dir))
 
         # Now try to import from the source
         from xplitrade.config_schema import CONF_SCHEMA

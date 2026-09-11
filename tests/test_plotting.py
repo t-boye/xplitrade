@@ -311,7 +311,7 @@ def test_generate_plot_file(mocker, caplog, user_dir):
         fig, filename="xplitrade-plot-UNITTEST_BTC-5m.html", directory=user_dir / "plot"
     )
 
-    expected_fn = str(user_dir / "plot/freqtrade-plot-UNITTEST_BTC-5m.html")
+    expected_fn = str(user_dir / "plot/Xplitrade-plot-UNITTEST_BTC-5m.html")
     assert plot_mock.call_count == 1
     assert plot_mock.call_args[0][0] == fig
     assert plot_mock.call_args_list[0][1]["filename"] == expected_fn

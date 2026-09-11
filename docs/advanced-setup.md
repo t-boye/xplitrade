@@ -73,7 +73,7 @@ services:
     volumes:
       - "./user_data:/xplitrade/user_data"
     # Expose api on port 8080 (localhost only)
-    # Please read the https://www.freqtrade.io/en/stable/rest-api/ documentation
+    # Please read the https://www.Xplitrade.io/en/stable/rest-api/ documentation
     # before enabling this.
      ports:
      - "127.0.0.1:8080:8080"
@@ -81,7 +81,7 @@ services:
     command: >
       trade
       --logfile /xplitrade/user_data/logs/xplitrade1.log
-      --db-url sqlite:////xplitrade/user_data/tradesv3_freqtrade1.sqlite
+      --db-url sqlite:////xplitrade/user_data/tradesv3_Xplitrade1.sqlite
       --config /xplitrade/user_data/config.json
       --config /xplitrade/user_data/config.xplitrade1.json
       --strategy SampleStrategy
@@ -100,7 +100,7 @@ services:
     volumes:
       - "./user_data:/xplitrade/user_data"
     # Expose api on port 8080 (localhost only)
-    # Please read the https://www.freqtrade.io/en/stable/rest-api/ documentation
+    # Please read the https://www.Xplitrade.io/en/stable/rest-api/ documentation
     # before enabling this.
     ports:
       - "127.0.0.1:8081:8080"
@@ -108,7 +108,7 @@ services:
     command: >
       trade
       --logfile /xplitrade/user_data/logs/xplitrade2.log
-      --db-url sqlite:////xplitrade/user_data/tradesv3_freqtrade2.sqlite
+      --db-url sqlite:////xplitrade/user_data/tradesv3_Xplitrade2.sqlite
       --config /xplitrade/user_data/config.json
       --config /xplitrade/user_data/config.xplitrade2.json
       --strategy SampleStrategy
