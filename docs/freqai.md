@@ -7,7 +7,7 @@
 FreqAI is a software designed to automate a variety of tasks associated with training a predictive machine learning model to generate market forecasts given a set of input signals. In general, FreqAI aims to be a sandbox for easily deploying robust machine learning libraries on real-time data ([details](#freqai-position-in-open-source-machine-learning-landscape)).
 
 !!! Note
-    FreqAI is, and always will be, a not-for-profit, open source project. FreqAI does *not* have a crypto token, FreqAI does *not* sell signals, and FreqAI does not have a domain besides the present [xplitrade documentation](https://www.freqtrade.io/en/stable/freqai/).
+    FreqAI is, and always will be, a not-for-profit, open source project. FreqAI does *not* have a crypto token, FreqAI does *not* sell signals, and FreqAI does not have a domain besides the present [xplitrade documentation](https://www.Xplitrade.io/en/stable/freqai/).
 
 Features include:
 
@@ -117,7 +117,7 @@ Here we compile some external materials that provide deeper looks into various c
 
 ## Support
 
-You can find support for FreqAI in a variety of places, including the [Xplitrade discord](https://discord.gg/Jd8JYeWHc4), the dedicated [FreqAI discord](https://discord.gg/7AMWACmbjT), and in [github issues](https://github.com/freqtrade/xplitrade/issues).
+You can find support for FreqAI in a variety of places, including the [Xplitrade discord](https://discord.gg/Jd8JYeWHc4), the dedicated [FreqAI discord](https://discord.gg/7AMWACmbjT), and in [github issues](https://github.com/Xplitrade/xplitrade/issues).
 
 ## Credits
 

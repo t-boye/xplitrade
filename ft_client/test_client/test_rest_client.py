@@ -14,7 +14,7 @@ def log_has_re(line, logs):
 
 
 def get_rest_client():
-    client = FtRestClient("http://localhost:8080", "freqtrader", "password")
+    client = FtRestClient("http://localhost:8080", "Xplitrader", "password")
     client._session = MagicMock()
     request_mock = MagicMock()
     client._session.request = request_mock
@@ -22,12 +22,12 @@ def get_rest_client():
 
 
 def test_FtRestClient_init():
-    client = FtRestClient("http://localhost:8080", "freqtrader", "password")
+    client = FtRestClient("http://localhost:8080", "Xplitrader", "password")
     assert client is not None
     assert client._serverurl == "http://localhost:8080"
     assert client._session is not None
     assert client._session.auth is not None
-    assert client._session.auth == ("freqtrader", "password")
+    assert client._session.auth == ("Xplitrader", "password")
 
 
 @pytest.mark.parametrize("method", ["GET", "POST", "DELETE"])

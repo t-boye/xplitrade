@@ -36,7 +36,7 @@ def _get_var_typed(val):
 
 def _flat_vars_to_nested_dict(env_dict: dict[str, Any], prefix: str) -> dict[str, Any]:
     """
-    Environment variables must be prefixed with FREQTRADE.
+    Environment variables must be prefixed with Xplitrade.
     XPLITRADE__{section}__{key}
     :param env_dict: Dictionary to validate - usually os.environ
     :param prefix: Prefix to consider (usually XPLITRADE__)

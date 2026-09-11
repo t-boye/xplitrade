@@ -1,6 +1,6 @@
 class XplitradeException(Exception):
     """
-    Freqtrade base exception. Handled at the outermost level.
+    Xplitrade base exception. Handled at the outermost level.
     All other exception types are subclasses of this exception type.
     """
 

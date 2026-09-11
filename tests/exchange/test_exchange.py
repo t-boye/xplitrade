@@ -869,7 +869,7 @@ def test_validate_timeframes_failed(default_conf, mocker):
     default_conf["timeframe"] = "15s"
 
     with pytest.raises(
-        ConfigurationError, match=r"Timeframes < 1m are currently not supported by Freqtrade."
+        ConfigurationError, match=r"Timeframes < 1m are currently not supported by Xplitrade."
     ):
         Exchange(default_conf)
 

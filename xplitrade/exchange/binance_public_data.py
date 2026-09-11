@@ -135,7 +135,7 @@ async def _download_archive_ohlcv(
 
                         # A 404 error on the first day indicates missing data
                         # on https://data.binance.vision, we provide the warning and the advice.
-                        # https://github.com/freqtrade/freqtrade/blob/acc53065e5fa7ab5197073276306dc9dc3adbfa3/tests/exchange_online/test_binance_compare_ohlcv.py#L7
+                        # https://github.com/Xplitrade/Xplitrade/blob/acc53065e5fa7ab5197073276306dc9dc3adbfa3/tests/exchange_online/test_binance_compare_ohlcv.py#L7
                         if current_day == 1:
                             logger.warning(
                                 f"Fast download is unavailable due to missing data: "
@@ -468,7 +468,7 @@ async def _download_archive_trades(
 
                         # A 404 error on the first day indicates missing data
                         # on https://data.binance.vision, we provide the warning and the advice.
-                        # https://github.com/freqtrade/freqtrade/blob/acc53065e5fa7ab5197073276306dc9dc3adbfa3/tests/exchange_online/test_binance_compare_ohlcv.py#L7
+                        # https://github.com/Xplitrade/Xplitrade/blob/acc53065e5fa7ab5197073276306dc9dc3adbfa3/tests/exchange_online/test_binance_compare_ohlcv.py#L7
                         if current_day == 1:
                             logger.warning(
                                 f"Fast download is unavailable due to missing data: "

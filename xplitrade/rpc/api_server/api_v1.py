@@ -103,8 +103,8 @@ def show_config(rpc: RPC | None = Depends(get_rpc_optional), config=Depends(get_
     state: State | str = ""
     strategy_version = None
     if rpc:
-        state = rpc._freqtrade.state
-        strategy_version = rpc._freqtrade.strategy.version()
+        state = rpc._Xplitrade.state
+        strategy_version = rpc._Xplitrade.strategy.version()
     resp = RPC._rpc_show_config(config, state, strategy_version)
     resp["api_version"] = API_VERSION
     return resp
@@ -146,7 +146,7 @@ def markets(
         handleExchangePayload(query, config_loc)
         exchange = get_exchange(config_loc)
     else:
-        exchange = rpc._freqtrade.exchange
+        exchange = rpc._Xplitrade.exchange
 
     return {
         "markets": exchange.get_markets(
@@ -184,7 +184,7 @@ def get_strategy(
             )
     else:
         # trade mode
-        strategy_obj = rpc._freqtrade.strategy
+        strategy_obj = rpc._Xplitrade.strategy
         if strategy_obj.get_strategy_name() != strategy:
             raise HTTPException(
                 status_code=404,

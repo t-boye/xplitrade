@@ -48,7 +48,7 @@ dataframe['rsi'] = ta.RSI(dataframe)
 
 ??? Hint "Technical Analysis libraries"
     Different libraries work in different ways to generate indicator values. Please check the documentation of each library to understand
-    how to integrate it into your strategy. You can also check the [Xplitrade example strategies](https://github.com/freqtrade/xplitrade-strategies) to give you ideas.
+    how to integrate it into your strategy. You can also check the [Xplitrade example strategies](https://github.com/Xplitrade/xplitrade-strategies) to give you ideas.
 
 ### Populate entry signals
 
@@ -169,7 +169,7 @@ Once your bot is running in dry or live mode, Xplitrade has six mechanisms to co
 
 - **[FreqUI](freq-ui.md)**: The easiest to get started with, FreqUI is a web interface to see and control current activity of your bot.
 - **[Telegram](telegram-usage.md)**: On mobile devices, Telegram integration is available to get alerts about your bot activity and to control certain aspects.
-- **[FTUI](https://github.com/freqtrade/ftui)**: FTUI is a terminal (command line) interface to Xplitrade, and allows monitoring of a running bot only.
+- **[FTUI](https://github.com/Xplitrade/ftui)**: FTUI is a terminal (command line) interface to Xplitrade, and allows monitoring of a running bot only.
 - **[xplitrade-client](rest-api.md#consuming-the-api)**: A python implementation of the REST API, making it easy to make requests and consume bot responses from your python apps or the command line.
 - **[REST API endpoints](rest-api.md#available-endpoints)**: The REST API allows programmers to develop their own tools to interact with a Xplitrade bot.
 - **[Webhooks](webhook-config.md)**: Xplitrade can send information to other services, e.g. discord, by webhooks.

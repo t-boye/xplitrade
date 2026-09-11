@@ -10,7 +10,7 @@ Hyperopt requires historic data to be available, just as backtesting does (hyper
 To learn how to get data for the pairs and exchange you're interested in, head over to the [Data Downloading](data-download.md) section of the documentation.
 
 !!! Bug
-    Hyperopt can crash when used with only 1 CPU Core as found out in [Issue #1133](https://github.com/freqtrade/xplitrade/issues/1133)
+    Hyperopt can crash when used with only 1 CPU Core as found out in [Issue #1133](https://github.com/Xplitrade/xplitrade/issues/1133)
 
 !!! Note
     Since 2021.4 release you no longer have to write a separate hyperopt class, but can configure the parameters directly in the strategy.
@@ -844,7 +844,7 @@ To achieve same the results (number of trades, their durations, profit, etc.) as
 
 Should results not match, check the following factors:
 
-* You may have added parameters to hyperopt in `populate_indicators()` where they will be calculated only once **for all epochs**. If you are, for example, trying to optimise multiple SMA timeperiod values, the hyperoptable timeperiod parameter should be placed in `populate_entry_trend()` which is calculated every epoch. See [Optimizing an indicator parameter](https://www.freqtrade.io/en/stable/hyperopt/#optimizing-an-indicator-parameter).
+* You may have added parameters to hyperopt in `populate_indicators()` where they will be calculated only once **for all epochs**. If you are, for example, trying to optimise multiple SMA timeperiod values, the hyperoptable timeperiod parameter should be placed in `populate_entry_trend()` which is calculated every epoch. See [Optimizing an indicator parameter](https://www.Xplitrade.io/en/stable/hyperopt/#optimizing-an-indicator-parameter).
 * If you have disabled the auto-export of hyperopt parameters into the JSON parameters file, double-check to make sure you transferred all hyperopted values into your strategy correctly.
 * Check the logs to verify what parameters are being set and what values are being used.
 * Pay special care to the stoploss, max_open_trades and trailing stoploss parameters, as these are often set in configuration files, which override changes to the strategy. Check the logs of your backtest to ensure that there were no parameters inadvertently set by the configuration (like `stoploss`, `max_open_trades` or `trailing_stop`).

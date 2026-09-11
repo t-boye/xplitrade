@@ -31,7 +31,7 @@ def test_init_create_session(default_conf):
 
 def test_init_custom_db_url(default_conf, tmp_path):
     # Update path to a value other than default, but still in-memory
-    filename = tmp_path / "freqtrade2_test.sqlite"
+    filename = tmp_path / "Xplitrade2_test.sqlite"
     assert not filename.is_file()
 
     default_conf.update({"db_url": f"sqlite:///{filename}"})
@@ -63,7 +63,7 @@ def test_init_prod_db(default_conf, mocker):
 
 
 def test_init_dryrun_db(default_conf, tmpdir):
-    filename = f"{tmpdir}/freqtrade2_prod.sqlite"
+    filename = f"{tmpdir}/Xplitrade2_prod.sqlite"
     assert not Path(filename).is_file()
     default_conf.update({"dry_run": True, "db_url": f"sqlite:///{filename}"})
 

@@ -12,7 +12,7 @@ from xplitrade.candle_columns import OHLCV_COLUMNS as DEFAULT_DATAFRAME_COLUMNS 
 from xplitrade.enums import CandleType, PriceType
 
 
-DOCS_LINK = "https://www.freqtrade.io/en/stable"
+DOCS_LINK = "https://www.Xplitrade.io/en/stable"
 DEFAULT_CONFIG = "config.json"
 PROCESS_THROTTLE_SECS = 5  # sec
 HYPEROPT_EPOCH = 100  # epochs

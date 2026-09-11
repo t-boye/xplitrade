@@ -16,7 +16,7 @@ from tests.conftest import get_patched_xplitradebot, log_has
 def get_webhook_dict() -> dict:
     return {
         "enabled": True,
-        "url": "https://maker.ifttt.com/trigger/freqtrade_test/with/key/c764udvJ5jfSlswVRukZZ2/",
+        "url": "https://maker.ifttt.com/trigger/Xplitrade_test/with/key/c764udvJ5jfSlswVRukZZ2/",
         "webhookentry": {
             # Intentionally broken, as "entry" should have priority.
             "value1": "Buying {pair55555}",
@@ -401,7 +401,7 @@ def test_exception_send_msg(default_conf, mocker, caplog):
 def test__send_msg(default_conf, mocker, caplog):
     default_conf["webhook"] = get_webhook_dict()
     webhook = Webhook(RPC(get_patched_xplitradebot(mocker, default_conf)), default_conf)
-    msg = {"value1": "DEADBEEF", "value2": "ALIVEBEEF", "value3": "FREQTRADE"}
+    msg = {"value1": "DEADBEEF", "value2": "ALIVEBEEF", "value3": "Xplitrade"}
     post = MagicMock()
     mocker.patch("xplitrade.rpc.webhook.post", post)
     webhook._send_msg(msg)

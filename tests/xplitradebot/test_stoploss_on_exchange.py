@@ -21,7 +21,7 @@ from tests.conftest import (
     patch_whitelist,
 )
 from tests.conftest_trades import entry_side, exit_side
-from tests.xplitradebot.test_freqtradebot import patch_RPCManager
+from tests.xplitradebot.test_Xplitradebot import patch_RPCManager
 
 
 @pytest.mark.parametrize("is_short", [False, True])
@@ -365,7 +365,7 @@ def test_handle_stoploss_on_exchange_partial_cancel_here(
     assert trade.amount == 30
     stop_order_dict.update({"id": "102"})
     # Stoploss on exchange is open.
-    # Freqtrade cancels the stop - but cancel returns a partial filled order.
+    # Xplitrade cancels the stop - but cancel returns a partial filled order.
     stoploss_order_hit = MagicMock(
         return_value={
             "id": "101",

@@ -1,5 +1,5 @@
 <!-- Thank you for sending your pull request. But first, have you included
-unit tests, and is your code PEP8 conformant? [More details](https://github.com/freqtrade/xplitrade/blob/develop/CONTRIBUTING.md)
+unit tests, and is your code PEP8 conformant? [More details](https://github.com/Xplitrade/xplitrade/blob/develop/CONTRIBUTING.md)
 
 Did you use AI to create your changes?
 If so, please state it clearly in the PR description (failing to do so may result in your PR being closed).

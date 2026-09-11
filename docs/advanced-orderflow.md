@@ -3,7 +3,7 @@
 This guide walks you through utilizing public trade data for advanced orderflow analysis in Xplitrade.
 
 !!! Warning "Experimental Feature"
-    The orderflow feature is currently in beta and may be subject to changes in future releases. Please report any issues or feedback on the [Xplitrade GitHub repository](https://github.com/freqtrade/xplitrade/issues).
+    The orderflow feature is currently in beta and may be subject to changes in future releases. Please report any issues or feedback on the [Xplitrade GitHub repository](https://github.com/Xplitrade/xplitrade/issues).
     It's also currently not been tested with freqAI - and combining these two features is considered out of scope at this point.
 
 !!! Warning "Performance"

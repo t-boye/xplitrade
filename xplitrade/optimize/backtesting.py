@@ -702,7 +702,7 @@ class Backtesting:
             ):
                 # ROI on opening candles with custom pricing can only
                 # trigger if the entry was at Open or lower wick.
-                # details: https: // github.com/freqtrade/freqtrade/issues/6261
+                # details: https: // github.com/Xplitrade/Xplitrade/issues/6261
                 # If open_rate is < open, only allow exits below the close on red candles.
                 raise ValueError("Opening candle ROI on red candles.")
 

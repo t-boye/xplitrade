@@ -4,7 +4,7 @@
 
 Feel like our bot is missing a feature? We welcome your pull requests! 
 
-Issues labeled [good first issue](https://github.com/freqtrade/xplitrade/labels/good%20first%20issue) can be good first contributions, and will help get you familiar with the codebase.
+Issues labeled [good first issue](https://github.com/Xplitrade/xplitrade/labels/good%20first%20issue) can be good first contributions, and will help get you familiar with the codebase.
 
 Few pointers for contributions:
 
@@ -20,11 +20,11 @@ The final responsibility for the code lies with the PR author, not with the AI, 
 - **Never let an LLM speak for you** - all comments, issues and PR descriptions should be written in your own words, reflecting your own understanding.
 - **Never let an LLM think for you** - only submit contributions you fully understand and can explain.
 
-If you are unsure, discuss the feature on our [discord server](https://discord.gg/p7nuUNVfP7) or in a [issue](https://github.com/freqtrade/xplitrade/issues) before a Pull Request.
+If you are unsure, discuss the feature on our [discord server](https://discord.gg/p7nuUNVfP7) or in a [issue](https://github.com/Xplitrade/xplitrade/issues) before a Pull Request.
 
 ## Getting started
 
-Best start by reading the [documentation](https://www.freqtrade.io/) to get a feel for what is possible with the bot, or head straight to the [Developer-documentation](https://www.freqtrade.io/en/latest/developer/) (WIP) which should help you getting started.
+Best start by reading the [documentation](https://www.Xplitrade.io/) to get a feel for what is possible with the bot, or head straight to the [Developer-documentation](https://www.Xplitrade.io/en/latest/developer/) (WIP) which should help you getting started.
 
 ## Before sending the PR
 

@@ -74,7 +74,7 @@ class IHyperOpt(ABC):
         ranges for parameters which automatically adapts to the
         timeframe used.
 
-        It's used by Freqtrade by default, if no custom roi_space method is defined.
+        It's used by Xplitrade by default, if no custom roi_space method is defined.
         """
 
         # Default scaling coefficients for the roi hyperspace. Can be changed
@@ -93,7 +93,7 @@ class IHyperOpt(ABC):
         #   are scaled linearly.
         # * 'roi_p' (limits for the ROI value steps) components are scaled logarithmically.
         #
-        # The scaling is designed so that it maps exactly to the legacy Freqtrade roi_space()
+        # The scaling is designed so that it maps exactly to the legacy Xplitrade roi_space()
         # method for the 5m timeframe.
         roi_t_scale = timeframe_min / 5
         roi_p_scale = math.log1p(timeframe_min) / math.log1p(5)

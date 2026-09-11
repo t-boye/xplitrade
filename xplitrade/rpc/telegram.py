@@ -399,7 +399,7 @@ class Telegram(RPCHandler):
             self._config["telegram"].get("notification_settings", {}).get("show_candle", "off")
         )
         if candle_val != "off" and candle_val == "ohlc":
-            analyzed_df, _ = self._rpc._freqtrade.dataprovider.get_analyzed_dataframe(
+            analyzed_df, _ = self._rpc._Xplitrade.dataprovider.get_analyzed_dataframe(
                 pair, self._config["timeframe"]
             )
             candle = analyzed_df.iloc[-1].squeeze() if len(analyzed_df) > 0 else None
@@ -1917,7 +1917,7 @@ class Telegram(RPCHandler):
             "Optionally takes a rate at which to buy "
             "(only applies to limit orders).` \n"
         )
-        if self._rpc._freqtrade.trading_mode != TradingMode.SPOT:
+        if self._rpc._Xplitrade.trading_mode != TradingMode.SPOT:
             force_enter_text += (
                 "*/forceshort <pair> [<rate>]:* `Instantly shorts the given pair. "
                 "Optionally takes a rate at which to sell "
@@ -2012,7 +2012,7 @@ class Telegram(RPCHandler):
         :param update: message update
         :return: None
         """
-        strategy_version = self._rpc._freqtrade.strategy.version()
+        strategy_version = self._rpc._Xplitrade.strategy.version()
         version_string = f"*Version:* `{__version__}`"
         if strategy_version is not None:
             version_string += f"\n*Strategy version: * `{strategy_version}`"
@@ -2028,7 +2028,7 @@ class Telegram(RPCHandler):
         :param update: message update
         :return: None
         """
-        val = RPC._rpc_show_config(self._config, self._rpc._freqtrade.state)
+        val = RPC._rpc_show_config(self._config, self._rpc._Xplitrade.state)
 
         if val["trailing_stop"]:
             sl_info = (

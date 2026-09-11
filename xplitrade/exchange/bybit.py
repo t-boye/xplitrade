@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 class Bybit(Exchange):
     """Bybit exchange class.
-    Contains adjustments needed for Freqtrade to work with this exchange.
+    Contains adjustments needed for Xplitrade to work with this exchange.
     """
 
     unified_account = False

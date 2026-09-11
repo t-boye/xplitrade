@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 
 def _extend_validator(validator_class):
     """
-    Extended validator for the Freqtrade configuration JSON Schema.
+    Extended validator for the Xplitrade configuration JSON Schema.
     Currently it only handles defaults for subschemas.
     """
     validate_properties = validator_class.VALIDATORS["properties"]
@@ -40,7 +40,7 @@ def _extend_validator(validator_class):
     return validators.extend(validator_class, {"properties": set_defaults})
 
 
-FreqtradeValidator = _extend_validator(Draft4Validator)
+XplitradeValidator = _extend_validator(Draft4Validator)
 
 
 def validate_config_schema(conf: dict[str, Any], preliminary: bool = False) -> dict[str, Any]:
@@ -62,11 +62,11 @@ def validate_config_schema(conf: dict[str, Any], preliminary: bool = False) -> d
     else:
         conf_schema["required"] = SCHEMA_MINIMAL_REQUIRED
     try:
-        FreqtradeValidator(conf_schema).validate(conf)
+        XplitradeValidator(conf_schema).validate(conf)
         return conf
     except ValidationError as e:
         logger.critical(f"Invalid configuration. Reason: {e}")
-        result = best_match(FreqtradeValidator(conf_schema).iter_errors(conf))
+        result = best_match(XplitradeValidator(conf_schema).iter_errors(conf))
         raise ConfigurationError(result.message)
 
 

@@ -268,7 +268,7 @@ xplitrade hyperopt --hyperopt-loss SharpeHyperOptLossDaily --strategy SampleStra
 
 ### Why does it take a long time to run hyperopt?
 
-* Discovering a great strategy with Hyperopt takes time. Study www.freqtrade.io, the Xplitrade Documentation page, join the Xplitrade [discord community](https://discord.gg/p7nuUNVfP7). While you patiently wait for the most advanced, free crypto bot in the world, to hand you a possible golden strategy specially designed just for you.
+* Discovering a great strategy with Hyperopt takes time. Study www.Xplitrade.io, the Xplitrade Documentation page, join the Xplitrade [discord community](https://discord.gg/p7nuUNVfP7). While you patiently wait for the most advanced, free crypto bot in the world, to hand you a possible golden strategy specially designed just for you.
 
 * If you wonder why it can take from 20 minutes to days to do 1000 epochs here are some answers:
 
@@ -296,8 +296,8 @@ Example:
 Xplitrade is using exclusively the following official channels:
 
 * [Xplitrade discord server](https://discord.gg/p7nuUNVfP7)
-* [Xplitrade documentation (https://freqtrade.io)](https://freqtrade.io)
-* [Xplitrade github organization](https://github.com/freqtrade)
+* [Xplitrade documentation (https://Xplitrade.io)](https://Xplitrade.io)
+* [Xplitrade github organization](https://github.com/Xplitrade)
 
 Nobody affiliated with the xplitrade project will ask you about your exchange keys or anything else exposing your funds to exploitation.
 Should you be asked to expose your exchange keys or send funds to some random wallet, then please don't follow these instructions.

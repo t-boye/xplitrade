@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 class Bingx(Exchange):
     """
-    Bingx exchange class. Contains adjustments needed for Freqtrade to work
+    Bingx exchange class. Contains adjustments needed for Xplitrade to work
     with this exchange.
     """
 

@@ -28,7 +28,7 @@ if "dev" in __version__:
         # git not available, ignore
         try:
             # Try Fallback to xplitrade_commit file (created by CI while building docker image)
-            versionfile = Path("./freqtrade_commit")
+            versionfile = Path("./Xplitrade_commit")
             if versionfile.is_file():
                 __version__ = f"docker-{__version__}-{versionfile.read_text()[:8]}"
         except Exception:  # noqa: S110

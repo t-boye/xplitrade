@@ -1,5 +1,5 @@
 {
-    "$schema": "https://schema.freqtrade.io/schema.json",
+    "$schema": "https://schema.Xplitrade.io/schema.json",
     "max_open_trades": 3,
     "stake_currency": "BTC",
     "stake_amount": 0.05,
@@ -179,7 +179,7 @@
         "enable_openapi": false,
         "jwt_secret_key": "somethingRandomSomethingRandom123",
         "CORS_origins": [],
-        "username": "freqtrader",
+        "username": "Xplitrader",
         "password": "SuperSecurePassword",
         "ws_token": "secret_ws_t0ken."
     },
@@ -199,7 +199,7 @@
         "remove_entry_exit_signals": false,
         "message_size_limit": 8
     },
-    "bot_name": "freqtrade",
+    "bot_name": "Xplitrade",
     "db_url": "sqlite:///tradesv3.sqlite",
     "initial_state": "running",
     "force_entry_enable": false,

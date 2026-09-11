@@ -21,7 +21,7 @@ Choose the public name of your bot (e.x. `Xplitrade bot`)
 
 > Good. Now let's choose a username for your bot. It must end in `bot`. Like this, for example: TetrisBot or tetris_bot.
 
-Choose the name id of your bot and send it to the BotFather (e.g. "`My_own_freqtrade_bot`")
+Choose the name id of your bot and send it to the BotFather (e.g. "`My_own_Xplitrade_bot`")
 
 *BotFather response:*
 

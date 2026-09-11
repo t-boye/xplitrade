@@ -889,7 +889,7 @@ tc41 = BTContainer(
 # Test 42: Custom-entry-price around candle low
 # Would cause immediate ROI exit, but since the trade was entered
 # below open, we treat this as cheating, and delay the exit by 1 candle.
-# details: https://github.com/freqtrade/freqtrade/issues/6261
+# details: https://github.com/Xplitrade/Xplitrade/issues/6261
 tc42 = BTContainer(
     data=[
         # D   O     H     L     C    V    EL XL ES Xs  BT
@@ -908,7 +908,7 @@ tc42 = BTContainer(
 
 # Test 43: Custom-entry-price around candle low
 # Would cause immediate ROI exit below close
-# details: https://github.com/freqtrade/freqtrade/issues/6261
+# details: https://github.com/Xplitrade/Xplitrade/issues/6261
 tc43 = BTContainer(
     data=[
         # D   O     H     L     C    V    EL XL ES Xs  BT

@@ -24,7 +24,7 @@ from tests.conftest import (
 def test_parse_args_None(caplog) -> None:
     with pytest.raises(SystemExit):
         main([])
-    assert log_has_re(r"Usage of Freqtrade requires a subcommand.*", caplog)
+    assert log_has_re(r"Usage of Xplitrade requires a subcommand.*", caplog)
 
 
 def test_parse_args_version(capsys) -> None:
@@ -227,8 +227,8 @@ def test_reconfigure(mocker, default_conf) -> None:
     worker._config = conf
     # reconfigure should return a new instance
     worker._reconfigure()
-    freqtrade2 = worker.xplitrade
+    Xplitrade2 = worker.xplitrade
 
     # Verify we have a new instance with the new config
-    assert xplitrade is not freqtrade2
-    assert xplitrade.config["stake_amount"] + 1 == freqtrade2.config["stake_amount"]
+    assert xplitrade is not Xplitrade2
+    assert xplitrade.config["stake_amount"] + 1 == Xplitrade2.config["stake_amount"]

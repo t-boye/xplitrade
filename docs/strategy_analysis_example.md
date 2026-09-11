@@ -2,7 +2,7 @@
 
 Debugging a strategy can be time-consuming. Xplitrade offers helper functions to visualize raw data.
 The following assumes you work with SampleStrategy, data for 5m timeframe from Binance and have downloaded them into the data directory in the default location.
-Please follow the [documentation](https://www.freqtrade.io/en/stable/data-download/) for more details.
+Please follow the [documentation](https://www.Xplitrade.io/en/stable/data-download/) for more details.
 
 ## Setup
 

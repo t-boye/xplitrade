@@ -19,7 +19,7 @@ Start by downloading and installing Docker / Docker Desktop for your platform:
 
 ## Xplitrade with docker
 
-Xplitrade provides an official Docker image on [Dockerhub](https://hub.docker.com/r/xplitradeorg/xplitrade/), as well as a [docker compose file](https://github.com/freqtrade/xplitrade/blob/stable/docker-compose.yml) ready for usage.
+Xplitrade provides an official Docker image on [Dockerhub](https://hub.docker.com/r/xplitradeorg/xplitrade/), as well as a [docker compose file](https://github.com/Xplitrade/xplitrade/blob/stable/docker-compose.yml) ready for usage.
 
 !!! Note
     - The following section assumes that `docker` is installed and available to the logged in user.
@@ -27,13 +27,13 @@ Xplitrade provides an official Docker image on [Dockerhub](https://hub.docker.co
 
 ### Docker quick start
 
-Create a new directory and place the [docker-compose file](https://raw.githubusercontent.com/freqtrade/xplitrade/stable/docker-compose.yml) in this directory.
+Create a new directory and place the [docker-compose file](https://raw.githubusercontent.com/Xplitrade/xplitrade/stable/docker-compose.yml) in this directory.
 
 ``` bash
 mkdir ft_userdata
 cd ft_userdata/
 # Download the docker-compose file from the repository
-curl https://raw.githubusercontent.com/freqtrade/xplitrade/stable/docker-compose.yml -o docker-compose.yml
+curl https://raw.githubusercontent.com/Xplitrade/xplitrade/stable/docker-compose.yml -o docker-compose.yml
 
 # Pull the xplitrade image
 docker compose pull
@@ -160,7 +160,7 @@ Head over to the [Backtesting Documentation](backtesting.md) to learn more.
 ### Additional dependencies with docker
 
 If your strategy requires dependencies not included in the default image - it will be necessary to build the image on your host.
-For this, please create a Dockerfile containing installation steps for the additional dependencies (have a look at [docker/Dockerfile.custom](https://github.com/freqtrade/xplitrade/blob/develop/docker/Dockerfile.custom) for an example).
+For this, please create a Dockerfile containing installation steps for the additional dependencies (have a look at [docker/Dockerfile.custom](https://github.com/Xplitrade/xplitrade/blob/develop/docker/Dockerfile.custom) for an example).
 
 You'll then also need to modify the `docker-compose.yml` file and uncomment the build step, as well as rename the image to avoid naming collisions.
 

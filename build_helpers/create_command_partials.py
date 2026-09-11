@@ -97,7 +97,7 @@ def extract_command_partials():
         ["xplitrade-client", "--show"], capture_output=True, text=True, check=True
     )
 
-    _write_partial_file("docs/commands/freqtrade-client.md", result_client.stdout)
+    _write_partial_file("docs/commands/Xplitrade-client.md", result_client.stdout)
 
 
 if __name__ == "__main__":

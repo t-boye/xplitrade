@@ -367,7 +367,7 @@ class IPairList(LoggingMixin, ABC):
 
             if not self._exchange.market_is_tradable(markets[pair]):
                 self.log_once(
-                    f"Pair {pair} is not tradable with Freqtrade. Removing it from whitelist..",
+                    f"Pair {pair} is not tradable with Xplitrade. Removing it from whitelist..",
                     logger.warning,
                     True,
                 )

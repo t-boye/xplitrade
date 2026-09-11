@@ -1,16 +1,16 @@
 {
-    "name": "freqtrade Develop",
-    "image": "ghcr.io/freqtrade/freqtrade-devcontainer:latest",
+    "name": "Xplitrade Develop",
+    "image": "ghcr.io/Xplitrade/Xplitrade-devcontainer:latest",
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     "forwardPorts": [
         8080
     ],
-    "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/freqtrade,type=bind,consistency=cached",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/Xplitrade,type=bind,consistency=cached",
     // Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
     "remoteUser": "ftuser",
     "onCreateCommand": "pip install --user -e .",
-    "postCreateCommand": "freqtrade create-userdir --userdir user_data/",
-    "workspaceFolder": "/workspaces/freqtrade",
+    "postCreateCommand": "Xplitrade create-userdir --userdir user_data/",
+    "workspaceFolder": "/workspaces/Xplitrade",
     "customizations": {
         "vscode": {
             "settings": {

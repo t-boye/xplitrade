@@ -142,9 +142,9 @@ CatBoost models have been removed with version 2025.12 and are no longer activel
 If you have existing bots using CatBoost models, you can still use them in your custom models by copy/pasting them from the git history (as linked below) and installing the Catboost library manually.
 We do however recommend switching to other supported model libraries like LightGBM or XGBoost for better support and future compatibility.
 
-* [CatboostRegressor](https://github.com/freqtrade/xplitrade/blob/c6f3b0081927e161a16b116cc47fb663f7831d30/xplitrade/freqai/prediction_models/CatboostRegressor.py)
-* [CatboostClassifier](https://github.com/freqtrade/xplitrade/blob/c6f3b0081927e161a16b116cc47fb663f7831d30/xplitrade/freqai/prediction_models/CatboostClassifier.py)
-* [CatboostClassifierMultiTarget](https://github.com/freqtrade/xplitrade/blob/c6f3b0081927e161a16b116cc47fb663f7831d30/xplitrade/freqai/prediction_models/CatboostClassifierMultiTarget.py)
+* [CatboostRegressor](https://github.com/Xplitrade/xplitrade/blob/c6f3b0081927e161a16b116cc47fb663f7831d30/xplitrade/freqai/prediction_models/CatboostRegressor.py)
+* [CatboostClassifier](https://github.com/Xplitrade/xplitrade/blob/c6f3b0081927e161a16b116cc47fb663f7831d30/xplitrade/freqai/prediction_models/CatboostClassifier.py)
+* [CatboostClassifierMultiTarget](https://github.com/Xplitrade/xplitrade/blob/c6f3b0081927e161a16b116cc47fb663f7831d30/xplitrade/freqai/prediction_models/CatboostClassifierMultiTarget.py)
 
 ## Funding rate data storage format
 

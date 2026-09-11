@@ -100,7 +100,7 @@ OS Specific steps are listed first, the common section below is necessary for al
     # Use piwheels.org to speed up installation
     sudo echo "[global]\nextra-index-url=https://www.piwheels.org/simple" > tee /etc/pip.conf
 
-    git clone https://github.com/freqtrade/xplitrade.git
+    git clone https://github.com/Xplitrade/xplitrade.git
     cd xplitrade
 
     bash setup.sh -i
@@ -122,7 +122,7 @@ Xplitrade is an open source crypto-currency trading bot, whose code is hosted on
 
 ```bash
 # Download `develop` branch of xplitrade repository
-git clone https://github.com/freqtrade/xplitrade.git
+git clone https://github.com/Xplitrade/xplitrade.git
 
 # Enter downloaded directory
 cd xplitrade
@@ -283,7 +283,7 @@ Download and install xplitrade.
 
 ```bash
 # download xplitrade
-git clone https://github.com/freqtrade/xplitrade.git
+git clone https://github.com/Xplitrade/xplitrade.git
 
 # enter downloaded directory 'xplitrade'
 cd xplitrade      

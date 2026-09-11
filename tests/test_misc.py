@@ -262,8 +262,8 @@ def test_plural() -> None:
             "postgresql+psycopg://host/dbname",
         ),
         (
-            "sqlite:////freqtrade/user_data/tradesv3.sqlite",
-            "sqlite:////freqtrade/user_data/tradesv3.sqlite",
+            "sqlite:////Xplitrade/user_data/tradesv3.sqlite",
+            "sqlite:////Xplitrade/user_data/tradesv3.sqlite",
         ),
     ],
 )

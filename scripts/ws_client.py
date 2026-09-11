@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Simple command line client for Testing/debugging
-a Freqtrade bot's message websocket
+a Xplitrade bot's message websocket
 
 Should not import anything from xplitrade,
 so it can be used as a standalone script.

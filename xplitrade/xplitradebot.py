@@ -1,5 +1,5 @@
 """
-Freqtrade is the main module of this bot. It contains the XplitradeBot class.
+Xplitrade is the main module of this bot. It contains the XplitradeBot class.
 """
 
 import logging
@@ -71,7 +71,7 @@ logger = logging.getLogger(__name__)
 
 class XplitradeBot(LoggingMixin):
     """
-    Freqtrade is the main class of the bot.
+    Xplitrade is the main class of the bot.
     This is from here the bot start its logic.
     """
 
@@ -114,8 +114,8 @@ class XplitradeBot(LoggingMixin):
             self.last_process: datetime | None = None
 
             # RPC runs in separate threads, can start handling external commands just after
-            # initialization, even before Freqtradebot has a chance to start its throttling,
-            # so anything in the Freqtradebot instance should be ready (initialized), including
+            # initialization, even before Xplitradebot has a chance to start its throttling,
+            # so anything in the Xplitradebot instance should be ready (initialized), including
             # the initial state of the bot.
             # Keep this at the end of this initialization method.
             self.rpc: RPCManager = RPCManager(self)
@@ -641,7 +641,7 @@ class XplitradeBot(LoggingMixin):
             Trade.rollback()
             logger.warning("Error finding onexchange order.")
         except Exception:
-            # catching https://github.com/freqtrade/freqtrade/issues/9025
+            # catching https://github.com/Xplitrade/Xplitrade/issues/9025
             Trade.rollback()
             logger.warning("Error finding onexchange order", exc_info=True)
         return False

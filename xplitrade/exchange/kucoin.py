@@ -13,10 +13,10 @@ logger = logging.getLogger(__name__)
 class Kucoin(Exchange):
     """Kucoin exchange class.
 
-    Contains adjustments needed for Freqtrade to work with this exchange.
+    Contains adjustments needed for Xplitrade to work with this exchange.
 
     Please note that this exchange is not included in the list of exchanges
-    officially supported by the Freqtrade development team. So some features
+    officially supported by the Xplitrade development team. So some features
     may still not work as expected.
     """
 

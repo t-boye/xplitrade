@@ -194,7 +194,7 @@ xplitrade/
 |---|---|---|
 | `xplitrade` | `xplitrade` | package name, imports, CLI |
 | `Xplitrade` | `Xplitrade` | display name, class prefixes |
-| `FREQTRADE` | `XPLITRADE` | env vars, uppercase constants |
+| `Xplitrade` | `XPLITRADE` | env vars, uppercase constants |
 | `xplitrade_client` | `xplitrade_client` | ft_client sub-package |
 | `XplitradeException` | `XplitradeException` | exception class name |
 | `xplitrade-client` | `xplitrade-client` | pip/CLI package name |
@@ -207,8 +207,8 @@ xplitrade/
 | Item | Reason |
 |---|---|
 | `freqai` / `FreqAI` | Separate ML sub-brand |
-| `freqtrade.io` URLs | Upstream docs — not our domain |
-| `github.com/freqtrade/...` URLs | Upstream repo links |
+| `Xplitrade.io` URLs | Upstream docs — not our domain |
+| `github.com/Xplitrade/...` URLs | Upstream repo links |
 | `xplitrade@protonmail.com` | Upstream author email |
 | `tradesv3.sqlite` | Database file name |
 | `qtpylib` vendor | Third-party vendor |
@@ -223,7 +223,7 @@ xplitrade/
 - [ ] 1.4 Bulk-replace `XplitradeException` → `XplitradeException`
 - [ ] 1.5 Bulk-replace `xplitrade_basedir` / `xplitrade_commit` variable names
 - [ ] 1.6 Bulk-replace `getLogger("xplitrade")` → `getLogger("xplitrade")`
-- [ ] 1.7 Bulk-replace `FREQTRADE__` → `XPLITRADE__` (env var prefixes)
+- [ ] 1.7 Bulk-replace `Xplitrade__` → `XPLITRADE__` (env var prefixes)
 - [ ] 1.8 Bulk-replace display strings `"Xplitrade"` → `"Xplitrade"` in `.py`
 - [ ] 1.9 Update root `pyproject.toml`
 - [ ] 1.10 Update `ft_client/pyproject.toml`

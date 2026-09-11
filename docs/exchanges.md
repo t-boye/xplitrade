@@ -88,7 +88,7 @@ Xplitrade supports binance RSA API keys.
 We recommend to use them as environment variable.
 
 ``` bash
-export FREQTRADE__EXCHANGE__SECRET="$(cat ./rsa_binance.private)"
+export Xplitrade__EXCHANGE__SECRET="$(cat ./rsa_binance.private)"
 ```
 
 They can however also be configured via configuration file. Since json doesn't support multi-line strings, you'll have to replace all newlines with `\n` to have a valid json file.
