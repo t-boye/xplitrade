@@ -30,7 +30,9 @@ export function Trades() {
     try {
       const r = await api.trades(limit, off)
       setTrades(r.trades); setTotal(r.total_trades); setOffset(off)
-    } catch (e: any) { setErr(e.message) }
+    } catch (e: any) {
+      if (!e.message?.includes('correct state')) setErr(e.message)
+    }
     finally { setLoading(false) }
   }
 

@@ -85,14 +85,25 @@ export function Chart() {
       const r = await fetch(`/api/v1/pair_history?pair=${encodeURIComponent(pair)}&timeframe=${tf}&limit=300`, {
         headers: { Authorization: `Bearer ${tok()}` },
       })
-      if (!r.ok) throw new Error(`${r.status} ${r.statusText}`)
+      if (!r.ok) {
+        const body = await r.text().catch(() => r.statusText)
+        try {
+          const parsed = JSON.parse(body)
+          throw new Error(parsed.detail || `${r.status} ${r.statusText}`)
+        } catch (e) {
+          if (e instanceof SyntaxError) throw new Error(body || `${r.status} ${r.statusText}`)
+          throw e
+        }
+      }
       const data = await r.json()
       const candles: CandlestickData[] = (data.data ?? []).map((c: number[]) => ({
         time: Math.floor(c[0] / 1000) as number,
         open: c[1], high: c[2], low: c[3], close: c[4],
       }))
       if (candles.length) { series.current?.setData(candles); chartApi.current?.timeScale().fitContent() }
-    } catch (e: any) { setErr(e.message) }
+    } catch (e: any) {
+      if (!e.message?.includes('correct state')) setErr(e.message)
+    }
     finally { setLoading(false) }
   }
 
