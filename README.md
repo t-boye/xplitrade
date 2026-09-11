@@ -1,5 +1,9 @@
 # Xplitrade — Professional Crypto Trading Bot
 
+<p align="center">
+  <img src="docs/assets/xplitrade_logo.png" alt="Xplitrade" width="320"/>
+</p>
+
 [![Website](https://img.shields.io/badge/Website-xplitrade.pages.dev-12B574?style=flat-square&logo=cloudflare)](https://xplitrade.pages.dev)
 [![GitHub](https://img.shields.io/badge/GitHub-t--boye%2Fxplitrade-181717?style=flat-square&logo=github)](https://github.com/t-boye/xplitrade)
 
